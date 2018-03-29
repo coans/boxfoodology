@@ -4,8 +4,8 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>TheraProject</title>
-		<meta name="description" content="TheraProject is Java web tutorial :)" />
+		<title>BoxFoodology</title>
+		<meta name="description" content="BoxFoodology is Java web tutorial :)" />
 
 		<base href="${baseurl}">
 		<!-- CSS -->

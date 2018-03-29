@@ -2,7 +2,7 @@
 
 <footer>
 	<div class="container">
-		<p>&copy; 2015 TheraProject</p>
+		<p>&copy; 2018 BoxFoodology</p>
 		<ul>
 			<li>Currently v${verison}</li>
 			<li>·</li>

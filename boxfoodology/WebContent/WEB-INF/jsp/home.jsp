@@ -9,7 +9,7 @@
 					<span class="h1grey">Welcome</span>
 					<span class="h1grey">to</span>
 					<br/>
-					<span class="h1brown">TheraProject</span>
+					<span class="h1brown">BoxFoodology</span>
 				</h1>
 				<c:choose>
 					<c:when test="${not empty user}">
