@@ -37,7 +37,7 @@ body {
 }
 
 .navbar-inverse .navbar-brand {
-	color: #999999
+	color: #FFFFFF
 }
 
 .navbar-inverse .navbar-brand:hover {
@@ -45,7 +45,7 @@ body {
 }
 
 .navbar-inverse .navbar-nav>li>a {
-	color: #999999
+	color: #FFFFFF
 }
 
 .navbar-inverse .navbar-nav>li>a:hover,.navbar-inverse .navbar-nav>li>a:focus
@@ -64,7 +64,7 @@ body {
 }
 
 .dropdown-menu>li>a {
-	color: #999999
+	color: #FFFFFF
 }
 
 .dropdown-menu>li>a:hover,.dropdown-menu>li>a:focus {
@@ -122,8 +122,8 @@ section .container {
 }
 
 .section-home-background {
-    background-image: url("../images/theraproject.jpg");
-    background-position: center center;
+    background-image: url("../images/main.jpeg");
+    background-position: top center;
     background-repeat: no-repeat;
     background-size: 100% 100%;
 	font-size: 21px;
@@ -168,7 +168,7 @@ section .container {
 }
 
 .section-blue {
-    background: none repeat scroll 0 0 rgb(87, 151, 208);
+    background: none repeat scroll 0 0 rgb(247, 248, 249);
     color: rgb(255, 255, 255);
 }
 

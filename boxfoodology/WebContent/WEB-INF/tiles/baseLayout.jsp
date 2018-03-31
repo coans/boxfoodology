@@ -12,6 +12,7 @@
 		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
 		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans">
 		<link rel="stylesheet" href="css/custom.css?v=30012015" />
+		<link rel="icon" href="images/logo.jpeg">
 		<!-- JS -->
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
