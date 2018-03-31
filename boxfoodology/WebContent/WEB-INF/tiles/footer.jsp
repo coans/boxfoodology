@@ -24,7 +24,7 @@
 			</ul>
 		</div>	
 		<div class="col-xs-4" align="right">
-			<img alt="BoxFoodology" src="images/logo.jpeg" height="130" width="170">
+			<img alt="BoxFoodology" src="images/logo.jpeg" height="100" width="150">
 		</div>				
 	</div>
 	<div class="container">
