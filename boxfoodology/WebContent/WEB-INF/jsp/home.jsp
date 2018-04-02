@@ -13,12 +13,12 @@
 						</div>
 					</c:when>
 					<c:otherwise>
-						<div>
+<!-- 						<div>
 							<a href="signup" class="btn btn-primary btn-lg">Sign up it's free!</a>
 						</div>
 						<div>
 							<a href="login" class="orlogin">or log in</a>
-						</div>
+						</div> -->
 					</c:otherwise>
 				</c:choose>
 				<div class="btn-down">
@@ -44,6 +44,9 @@
 			</c:forEach>
 		</c:if>		
 		<section id="about" class="section-blue">
+			<div class="moving-text">
+				<p><i>Welcome to the best place in Dubai where you can order food. <a href="signup">Sign up</a> it's free, or <a href="login"><spring:message code="button.login"/></a></i></p>
+			</div>		
 			<div class="container text-center">
 				<table style="width:50%" align="center">
 				<tr>

@@ -213,3 +213,49 @@ body {
 .orlogin {
 	color: #255255255;
 }
+
+.moving-text {
+	height: 50px;	
+	overflow: hidden;
+	position: relative;
+}
+
+.moving-text p {
+	font-size: 1.5em;
+	color: #213e5b;
+	position: absolute;
+	width: 90%;
+	height: 100%;
+	margin: 0;
+	line-height: 40px;
+	text-align: center;
+	/* Starting position */
+	-moz-transform:translateX(0%);
+	-webkit-transform:translateX(0%);	
+	transform:translateX(0%);
+	/* Apply animation to this element */	
+	-moz-animation: moving-text 35s linear infinite;
+	-webkit-animation: moving-text 35s linear infinite;
+	animation: moving-text 35s linear infinite;
+}
+/* Move it (define the animation) */
+@-moz-keyframes moving-text {
+	0%   { -moz-transform: translateX(100%); }
+	100% { -moz-transform: translateX(-100%); }
+}
+@-webkit-keyframes moving-text {
+	0%   { -webkit-transform: translateX(100%); }
+	100% { -webkit-transform: translateX(-100%); }
+}
+@keyframes moving-text {
+	0%   { 
+	-moz-transform: translateX(100%); /* Firefox bug fix */
+	-webkit-transform: translateX(100%); /* Firefox bug fix */
+	transform: translateX(100%); 		
+ 	}
+	100% { 
+	-moz-transform: translateX(-100%); /* Firefox bug fix */
+	-webkit-transform: translateX(-100%); /* Firefox bug fix */
+	transform: translateX(-100%); 
+	}
+}
