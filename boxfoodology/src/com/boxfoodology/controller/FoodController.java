@@ -2,6 +2,7 @@ package com.boxfoodology.controller;
 
 import java.beans.PropertyEditorSupport;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,6 +16,7 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -31,6 +33,7 @@ import com.boxfoodology.validator.FoodValidator;
 @RequestMapping(FoodController.CONTROLLER)
 public class FoodController extends BaseController {
 	
+	private static final String VIEW_NEW = "food-new";
 	public static final String CONTROLLER = "foods";
 	public static final String VIEW_DEFAULT = "foods";
 	
@@ -43,12 +46,19 @@ public class FoodController extends BaseController {
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public String defaultView(ModelMap model, HttpServletRequest request, HttpSession session, Locale locale) {
+		model.addAttribute("foods", foodRepository.findAll());
+		
+		return VIEW_DEFAULT;
+	}
+	
+	@RequestMapping(value = "/new", method = RequestMethod.GET)
+	public String add(ModelMap model, HttpServletRequest request, HttpSession session, Locale locale) {
 		FoodBean foodBean = new FoodBean();
 		model.addAttribute("foodmodel", foodBean);
 		model.addAttribute("action", CONTROLLER + "/create");
 		model.addAttribute("categories", categoryRepository.findAll());
 		
-		return VIEW_DEFAULT;
+		return VIEW_NEW;
 	}
 	
 	@RequestMapping(value = "create", method = RequestMethod.POST)
@@ -70,13 +80,60 @@ public class FoodController extends BaseController {
 		validator.validate(food, errors);
 		
 		if (errors.hasErrors()) {
+			model.addAttribute("foodmodel", foodBean);
+			model.addAttribute("action", CONTROLLER + "/create");
 			model.addAttribute("categories", categoryRepository.findAll());
-			return VIEW_DEFAULT;
+			return VIEW_NEW;
 		}
 		
 		foodRepository.save(food);
 		
-		return "redirect:/" + HomeController.CONTROLLER;
+		return "redirect:/" + FoodController.CONTROLLER;
+	}
+	
+	@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
+	public String edit(@PathVariable(value = "id") Integer foodId, ModelMap model, HttpServletRequest request, HttpSession session, Locale locale) throws SQLException, IOException {
+		Food food = foodRepository.findOne(foodId);
+		FoodBean foodBean = new FoodBean();
+		foodBean.setCategory(food.getCategory());
+		foodBean.setDescription(food.getDescription());
+		foodBean.setId(food.getId());
+		foodBean.setName(food.getName());
+		foodBean.setPrice(food.getPrice());
+		/*
+		 Blob blob = food.getImage();
+		    byte [] array = blob.getBytes( 1, ( int ) blob.length() );
+		    File file = File.createTempFile("something-", ".binary", new File("."));
+		    FileOutputStream out = new FileOutputStream( file );
+		    out.write( array );
+		    out.close();
+		    FileItem fileItem = new DiskFileItem("mainFile", Files.probeContentType(file.toPath()), false, file.getName(), (int) file.length(), file.getParentFile());
+
+		    try {
+		        InputStream input = new FileInputStream(file);
+		        OutputStream os = fileItem.getOutputStream();
+		        IOUtils.copy(input, os);
+		    } catch (IOException ex) {
+		        // do something.
+		    }
+
+		    MultipartFile multipartFile = new CommonsMultipartFile(fileItem);
+		foodBean.setImageFile(multipartFile);*/
+		
+		model.addAttribute("foodmodel", foodBean);
+		model.addAttribute("action", CONTROLLER + "/create");
+		model.addAttribute("categories", categoryRepository.findAll());
+		
+		return VIEW_NEW;
+	}
+	
+	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+	public String delete(@PathVariable(value = "id") Integer foodId) {
+		Food food = foodRepository.findOne(foodId);
+		food.setDeleted(true);
+		foodRepository.save(food);
+		
+		return "redirect:/" + FoodController.CONTROLLER;
 	}
 	
 	@Override

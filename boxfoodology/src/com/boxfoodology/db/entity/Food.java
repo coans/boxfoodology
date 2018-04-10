@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 
+import org.hibernate.annotations.Where;
+
 
 
 /**
@@ -19,6 +21,7 @@ import javax.persistence.NamedQuery;
  */
 @Entity
 @NamedQuery(name="Food.findAll", query="SELECT f FROM Food f")
+@Where(clause  = "deleted = 0")
 public class Food implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -29,6 +32,7 @@ public class Food implements Serializable {
 	private String description;
 	private Blob image;
 	private BigDecimal price;
+	private boolean deleted;
 
 	@ManyToOne
 	private Category category;
@@ -82,5 +86,13 @@ public class Food implements Serializable {
 
 	public void setPrice(BigDecimal price) {
 		this.price = price;
+	}
+
+	public boolean isDeleted() {
+		return deleted;
+	}
+
+	public void setDeleted(boolean deleted) {
+		this.deleted = deleted;
 	}
 }

@@ -53,6 +53,7 @@ CREATE TABLE `boxfoodology`.`food` (
   `description` VARCHAR(500) NULL,
   `image` MEDIUMBLOB NOT NULL,
   `price` DECIMAL(10,2) NOT NULL,
+  `deleted` TINYINT(1) NULL DEFAULT 0,
   `category_id` INT(11) NOT NULL,
   PRIMARY KEY (`id`),
   CONSTRAINT `fk_food_category`
