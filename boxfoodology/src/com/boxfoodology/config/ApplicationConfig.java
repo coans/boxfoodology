@@ -17,6 +17,8 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.Database;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.multipart.MultipartResolver;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 import com.boxfoodology.db.entity.User;
 
@@ -61,4 +63,9 @@ public class ApplicationConfig {
 		transactionManager.setEntityManagerFactory(entityManagerFactory().getObject());
 		return transactionManager;
 	}
+	
+    @Bean
+    public MultipartResolver multipartResolver() {
+        return new CommonsMultipartResolver();
+    }
 }

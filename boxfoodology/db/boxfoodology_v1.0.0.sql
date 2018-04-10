@@ -42,11 +42,27 @@ DEFAULT CHARACTER SET = utf8;
 CREATE TABLE IF NOT EXISTS `boxfoodology`.`category` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `title` VARCHAR(20) NOT NULL,
-  `image` BLOB NOT NULL,
+  `image` MEDIUMBLOB NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
+CREATE TABLE `boxfoodology`.`food` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(45) NOT NULL,
+  `description` VARCHAR(500) NULL,
+  `image` MEDIUMBLOB NOT NULL,
+  `category_id` INT(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  CONSTRAINT `fk_food_category`
+  FOREIGN KEY (`category_id`)
+  REFERENCES `boxfoodology`.`category` (`id`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION);
+
+
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+SET GLOBAL max_allowed_packet = 1024*1024*16;

@@ -19,6 +19,7 @@
 						<li><a href="my/profile"><spring:message code="submenu.mains.meals.for.one"/></a></li>
 						<li><a href="my/profile"><spring:message code="submenu.mains.meals.for.two"/></a></li>
 						<li><a href="my/profile"><spring:message code="submenu.mains.family.meals"/></a></li>
+						<li><a href="foods">Food</a></li>
 					</ul>
 				</li>
 				<li>
