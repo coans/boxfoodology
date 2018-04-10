@@ -5,7 +5,9 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Locale;
 
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.hibernate.engine.jdbc.BlobProxy;
@@ -33,9 +35,10 @@ import com.boxfoodology.validator.FoodValidator;
 @RequestMapping(FoodController.CONTROLLER)
 public class FoodController extends BaseController {
 	
-	private static final String VIEW_NEW = "food-new";
 	public static final String CONTROLLER = "foods";
 	public static final String VIEW_DEFAULT = "foods";
+	private static final String VIEW_NEW = "food-new";
+	private static final String VIEW_ITEMS = "items";
 	
 	@Autowired
 	private FoodRepository foodRepository;
@@ -134,6 +137,25 @@ public class FoodController extends BaseController {
 		foodRepository.save(food);
 		
 		return "redirect:/" + FoodController.CONTROLLER;
+	}
+	
+	@RequestMapping(value = "items/{categoryId}", method = RequestMethod.GET)
+	public String itemsView(@PathVariable(value = "categoryId") Integer categoryId, ModelMap model) {
+		model.addAttribute("foods", foodRepository.findFoodByCategory(categoryId));
+		model.addAttribute("title", categoryRepository.findOne(categoryId).getTitle());
+		
+		return VIEW_ITEMS;
+	}
+	
+	@RequestMapping(value = "image/{foodId}", method = RequestMethod.GET)
+	public void getImage(@PathVariable(value = "foodId") Integer foodId, HttpServletResponse response) throws SQLException, IOException {
+		Food food = foodRepository.findOne(foodId);
+		byte[] image = food.getImage().getBytes(1L, (int)food.getImage().length());
+		response.setContentType("image/jpg");
+		ServletOutputStream output = response.getOutputStream();
+		output.write(image);
+		output.close();
+		
 	}
 	
 	@Override

@@ -47,17 +47,17 @@
 			<div class="moving-text">
 				<p><i>Welcome to the best place in Dubai where you can order food. <a href="signup">Sign up</a> it's free, or <a href="login"><spring:message code="button.login"/></a></i></p>
 			</div>		
-			<div class="container text-center">
+			<div class="container text-center" style="padding-top: 0px;">
 				<table style="width:50%" align="center">
 				<tr>
-					<td style="padding-right: 20px;"><a href="policies/items"><i class="fa fa-angle-double-down"></i>
+					<td style="padding-right: 20px;"><a href="foods/items/1"><i class="fa fa-angle-double-down"></i>
 							<img src="images/cat1.jpg" title="Select Italian cuisine" height="250" width="375" />
 						</a>
 					</td>
-					<td style="padding-right: 20px;"><a href="#info"><i class="fa fa-angle-double-down"></i>
+					<td style="padding-right: 20px;"><a href="foods/items/2"><i class="fa fa-angle-double-down"></i>
 							<img src="images/cat2.jpg" title="Select Indian cuisine" height="250" width="375"/>
 						</a></td>
-					<td><a href="#info"><i class="fa fa-angle-double-down"></i>
+					<td><a href="foods/items/3"><i class="fa fa-angle-double-down"></i>
 							<img src="images/cat3.jpg" title="Select meals for two" height="250" width="375"/>
 						</a></td>				
 				</tr>
