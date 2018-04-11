@@ -37,6 +37,7 @@ public class SignUpController extends BaseController {
 	public static final String CONTROLLER = "signup";
 	public static final String VIEW_DEFAULT = "signup";
 	public static final String VIEW_EMAIL_SENT = "signup-email-sent";
+	private static final String ROLE_USER = "ROLE_USER";
 	
 	@Autowired
 	private EmailUtil emailUtil;
@@ -72,6 +73,7 @@ public class SignUpController extends BaseController {
         String uuid = UUID.randomUUID().toString();
         user.setUuid(uuid);
         user.setStatus(EnumStatus.INACTIVE.toString());
+        user.setRole(ROLE_USER);
         // if there is the inactive user, update it with new data
         User userDb = userRepository.findInactiveByEmail(user.getEmail());
         if (userDb != null) {

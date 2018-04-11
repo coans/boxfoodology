@@ -45,7 +45,7 @@ public class AuthorizationService implements UserDetailsService {
 
 	private List<GrantedAuthority> getGrantedAuthorities(com.boxfoodology.db.entity.User user) {
 		List<GrantedAuthority> grantedAuthorities = new ArrayList<GrantedAuthority>();
-		grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_USER"));
+		grantedAuthorities.add(new SimpleGrantedAuthority(user.getRole()));
 		return grantedAuthorities;
 	}
 

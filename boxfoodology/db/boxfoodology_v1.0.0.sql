@@ -19,6 +19,7 @@ CREATE TABLE IF NOT EXISTS `boxfoodology`.`user` (
   `uuid` VARCHAR(45) NULL DEFAULT NULL,
   `created` DATETIME NOT NULL,
   `status` ENUM('Active','Inactive') NOT NULL,
+  `role` VARCHAR(20) NOT NULL DEFAULT 'ROLE_USER',
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
@@ -62,6 +63,25 @@ CREATE TABLE `boxfoodology`.`food` (
   ON DELETE NO ACTION
   ON UPDATE NO ACTION);
 
+CREATE TABLE `boxfoodology`.`myorder` (
+  `id` BIGINT(20) NOT NULL AUTO_INCREMENT,
+  `created` DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
+  `food_id` INT NOT NULL,
+  `user_id` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_food_order_idx` (`food_id` ASC),
+  INDEX `fk_user_order_idx` (`user_id` ASC),
+  CONSTRAINT `fk_food_order`
+    FOREIGN KEY (`food_id`)
+    REFERENCES `boxfoodology`.`food` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_user_order`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `boxfoodology`.`user` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+  
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;

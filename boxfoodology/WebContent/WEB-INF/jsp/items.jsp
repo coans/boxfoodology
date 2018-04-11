@@ -44,27 +44,39 @@
 			</c:forEach>
 		</c:if>		
 		<section id="about" class="section-blue">
-			<h3 style="width:100%" align="center"><i>List of <b>${title}</b> food</i></h3>
+			<div class="moving-text">
+				<h3 style="width:100%; font-family:georgia;" align="center"><i>List of <b>${title}</b> food</i></h3>
+			</div>
 			<div class="container text-center" style="padding-top: 0px;">
 				<table style="width:50%; margin-left: 20px;" align="center">
 						<tr>
 							<c:forEach items="${foods}" var="food">
-								<td style="padding-right: 40px;"><a href="foods/detail/${food.id}"><img src="foods/image/${food.id}" alt="??image??" title="View details" height="212" width="243"/></a></td>
+								<td style="padding-right: 40px;"><a href="items/details/${food.id}"><img src="items/image/${food.id}" alt="??image??" title="View details" height="212" width="243"/></a></td>
 							</c:forEach>	
 						</tr>
 						<tr>
 							<c:forEach items="${foods}" var="food">
-								<td align="center"><label>${food.name}</label></td>
+								<td style="padding-right: 40px;" align="center"><h2>${food.name}</h2></td>
 							</c:forEach>
 						</tr>
 						<tr>
 							<c:forEach items="${foods}" var="food">
-								<td style="padding-right: 40px;" align="center"><label>${food.price} AED</label></td>
+								<td style="padding-right: 40px;" align="center"><p align="left">${food.description}</p></td>
+							</c:forEach>
+						</tr>						
+						<tr>
+							<c:forEach items="${foods}" var="food">
+								<td style="padding-right: 40px;" style="padding-right: 40px;" align="center">
+									<div class="row">
+										<div class="col-sm-6" align="left"><label>${food.price} AED</label></div>
+										<div class="col-sm-6" align="right"><a href="my/orders/add/${food.id}" class="btn btn-primary btn-lg">Add</a></div>
+									</div>
+								</td>
+								<%-- <td align="center"><a href="foods/add/${food.id}" class="btn btn-primary btn-lg">Add</a></td> --%>
 							</c:forEach>
 						</tr>
 						<tr>
 							<c:forEach items="${foods}" var="food">
-								<td align="center"><a href="foods/add/${food.id}" class="btn btn-primary btn-lg">Add</a></td>
 							</c:forEach>
 						</tr>
 <!--				<tr>
