@@ -1,7 +1,6 @@
 package com.boxfoodology.db.entity;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -14,7 +13,6 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.persistence.Transient;
 
 
 /**
@@ -55,9 +53,6 @@ public class User implements Serializable {
 	@OneToMany(mappedBy="user")
 	private List<Post> posts;
 
-	@Transient
-	private List<Myorder> orders = new ArrayList<Myorder>();;
-	
 	public User() {
 	}
 
@@ -161,16 +156,5 @@ public class User implements Serializable {
 
 	public void setRole(String role) {
 		this.role = role;
-	}
-
-	public List<Myorder> getOrders() {
-/*		if (orders == null) {
-			orders = new ArrayList<Order>();
-		}*/
-		return orders;
-	}
-
-	public void setOrders(List<Myorder> orders) {
-		this.orders = orders;
 	}
 }

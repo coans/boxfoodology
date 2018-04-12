@@ -48,27 +48,37 @@
 				<h3 style="width:100%; font-family:georgia;" align="center"><i>Selected food</i></h3>
 			</div>
 			<div class="container">
-				<%-- <p><a href="foods/new" class="btn btn-info"><spring:message code="food.header"/></a></p> --%>
+				<p><a href="my/orders/clear" class="btn btn-info"><spring:message code="orders.clear"/></a></p>
 				<table class="table table-striped">
 					<thead>
 						<tr>
-							<th scope="col">Food</th>
-							<th scope="col">Price</th>
-							<th scope="col">Action</th>
+							<th class="text-center">Food</th>
+							<th class="text-center">Price</th>
+							<th class="text-center">Action</th>
 						</tr>
 					</thead>
 					<tbody>
 						<c:forEach items="${orders}" var="order">	
 							<tr>
-								<td>${order.food.name}</td>
-								<td>${order.food.price}</td>
-								<td>
-									<a href="foods/edit/${food.id}" title="Edit"><i class="glyphicon glyphicon-pencil"></i></a>
+								<td width="50%" align="center">${order.food.name}</td>
+								<td width="30%" align="center">${order.food.price}</td>
+								<td width="20%" align="center">
+									<a href="my/orders/add/${order.food.id}" title="Add one more item"><i class="glyphicon glyphicon-plus"></i></a>
 									&nbsp;
-									<a href="foods/delete/${food.id}" title="Delete"><i class="glyphicon glyphicon-remove"></i></a>
+									<a href="my/orders/delete/${order.food.id}" title="Delete from order"><i class="glyphicon glyphicon-remove"></i></a>
 								</td>
 							</tr>
 						</c:forEach>
+						<tr>
+							<td class="active">&nbsp;</td>
+							<td class="active" align="center">In total:</td>
+							<td class="success">${priceOfOrderedItems} AED</td>						
+						</tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td>&nbsp;</td>
+							<td align="right" style="padding-right: 0px;"><a href="policies/confirm" class="btn btn-primary btn-small">Confirm order</a></td>						
+						</tr>
 					</tbody>
 			    </table>
 			</div>

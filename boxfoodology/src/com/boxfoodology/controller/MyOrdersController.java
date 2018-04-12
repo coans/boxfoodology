@@ -1,5 +1,7 @@
 package com.boxfoodology.controller;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
@@ -34,22 +36,49 @@ public class MyOrdersController extends BaseController {
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public String defaultView(ModelMap model, HttpServletRequest request, HttpSession session, Locale locale) {
-		model.addAttribute("orders", super.getUser().getOrders());
+		model.addAttribute("orders", request.getSession().getAttribute(getShoppingCartName()));
 		
 		return VIEW_DEFAULT;
 	}
 	
+	@SuppressWarnings("unchecked")
 	@RequestMapping(value = "add/{foodId}", method = RequestMethod.GET)
-	public String add(@PathVariable(value = "foodId") Integer foodId, ModelMap model) {
+	public String add(@PathVariable(value = "foodId") Integer foodId, HttpServletRequest request, ModelMap model) {
 		Food food = foodRepository.findOne(foodId);
 		Myorder order = new Myorder();
 		order.setFood(food);
 		order.setUser(super.getUser());
-
-		Myorder result = orderRepository.save(order);
 		
-		super.getUser().getOrders().add(result);
+		if (request.getSession().getAttribute(getShoppingCartName()) == null) {
+			request.getSession().setAttribute(getShoppingCartName(), new ArrayList<Myorder>());
+		}
+		List<Myorder> orders =  (List<Myorder>)request.getSession().getAttribute(getShoppingCartName());
+		orders.add(order);
+		request.getSession().setAttribute(getShoppingCartName(), orders);
 
-		return "redirect:/" + ItemController.CONTROLLER + "/" + food.getCategory().getId();
-	}	
+		return "redirect:/" + UserPath.MY + MyOrdersController.CONTROLLER;
+	}
+	
+	@SuppressWarnings("unchecked")
+	@RequestMapping(value = "delete/{foodId}", method = RequestMethod.GET)
+	public String delete(@PathVariable(value = "foodId") Integer foodId, HttpServletRequest request, ModelMap model) {
+		if (request.getSession().getAttribute(getShoppingCartName()) != null) {
+			List<Myorder> orders =  (List<Myorder>)request.getSession().getAttribute(getShoppingCartName());
+			for (int i = 0;i < orders.size();i++) {
+				if (orders.get(i).getFood().getId() == foodId) {
+					orders.remove(i);
+					break;
+				}
+			}
+			request.getSession().setAttribute(getShoppingCartName(), orders);
+		}
+		return "redirect:/" + UserPath.MY + MyOrdersController.CONTROLLER;
+	}
+	
+	@RequestMapping(value = "clear", method = RequestMethod.GET)
+	public String clear(HttpServletRequest request, ModelMap model) {
+		request.getSession().setAttribute(getShoppingCartName(), new ArrayList<Myorder>());
+		
+		return "redirect:/" + UserPath.MY + MyOrdersController.CONTROLLER;
+	}
 }

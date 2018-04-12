@@ -100,7 +100,7 @@
 			</ul>
 			
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="my/orders"><spring:message code="button.my.orders"/></a></li>
+				<li><a href="my/orders"><spring:message code="button.my.orders"/><span class="badge">${numberOfOrderedItems}</span></a></li>
 				<c:choose>
 					<c:when test="${not empty user}">
 						<li class="dropdown"><a class="dropdown-toggle"	data-toggle="dropdown" href="#">
