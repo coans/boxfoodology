@@ -4,163 +4,41 @@
 
 <div id="home">
 	<div class="section-container">
-		<section class="section-home-background">
-			<div class="container text-center">
-				<c:choose>
-					<c:when test="${not empty user}">
-						<div>
-							<a href="my/posts" class="btn btn-primary btn-lg">Add post</a>
-						</div>
-					</c:when>
-					<c:otherwise>
-<!-- 						<div>
-							<a href="signup" class="btn btn-primary btn-lg">Sign up it's free!</a>
-						</div>
-						<div>
-							<a href="login" class="orlogin">or log in</a>
-						</div> -->
-					</c:otherwise>
-				</c:choose>
-				<div class="btn-down">
-					<a href="#info"><i class="fa fa-angle-double-down"></i>
-						<img alt="" onmouseover="this.src='images/scroll-hover.png';" onmouseout="this.src='images/scroll.png';" />
-					</a>
-				</div>
-			</div>
-		</section>
-		<c:if test="${not empty posts}">
-			<c:forEach var="post" items="${posts}">
-				<section id="info" class="section-white section-home-white">
-					<div class="container text-center">
-						<h2>${post.title}</h2>
-						<div class="row">
-							<div class="col-md-6 col-md-offset-3">
-								<p>${post.message}</p>
-								<p>${post.user.firstName} ${post.user.lastName}: <fmt:formatDate pattern="dd-MM-YYYY hh:mm" value="${post.created}"/></p>
-							</div>
-						</div>
-					</div>
-				</section>
-			</c:forEach>
-		</c:if>		
+		<jsp:include page="home_picture.jsp"/>		
 		<section id="about" class="section-blue">
 			<div class="moving-text">
 				<h3 style="width:100%; font-family:georgia;" align="center"><i>List of <b>${title}</b> food</i></h3>
 			</div>
 			<div class="container text-center" style="padding-top: 0px;">
 				<table style="width:50%; margin-left: 20px;" align="center">
+					<c:forEach items="${foods}" var="oneRow">
 						<tr>
-							<c:forEach items="${foods}" var="food">
+							<c:forEach items="${oneRow}" var="food">
 								<td style="padding-right: 40px;"><a href="items/details/${food.id}"><img src="items/image/${food.id}" alt="??image??" title="View details" height="212" width="243"/></a></td>
 							</c:forEach>	
 						</tr>
 						<tr>
-							<c:forEach items="${foods}" var="food">
+							<c:forEach items="${oneRow}" var="food">
 								<td style="padding-right: 40px;" align="center"><h2>${food.name}</h2></td>
 							</c:forEach>
 						</tr>
 						<tr>
-							<c:forEach items="${foods}" var="food">
+							<c:forEach items="${oneRow}" var="food">
 								<td style="padding-right: 40px;" align="center"><p align="left">${food.description}</p></td>
 							</c:forEach>
 						</tr>						
 						<tr>
-							<c:forEach items="${foods}" var="food">
+							<c:forEach items="${oneRow}" var="food">
 								<td style="padding-right: 40px;" style="padding-right: 40px;" align="center">
 									<div class="row">
 										<div class="col-sm-6" align="left"><label>${food.price} AED</label></div>
 										<div class="col-sm-6" align="right"><a href="my/orders/add/${food.id}" class="btn btn-primary btn-lg">Add</a></div>
 									</div>
 								</td>
-								<%-- <td align="center"><a href="foods/add/${food.id}" class="btn btn-primary btn-lg">Add</a></td> --%>
 							</c:forEach>
 						</tr>
-						<tr>
-							<c:forEach items="${foods}" var="food">
-							</c:forEach>
-						</tr>
-<!--				<tr>
-						<td style="padding-right: 40px;">
-							<a href="policies/details"><img src="images/sl1.jpg" alt="item1" title="View details"/></a></td>
-						<td style="padding-right: 40px;"><img src="images/sl2.jpg" alt="item1"/></td>
-						<td style="padding-right: 40px;"><img src="images/sl1.jpg" alt="item1"/></td>
-						<td style="padding-right: 40px;"><img src="images/sl2.jpg" alt="item1"/></td>
-						<td style="padding-right: 40px;"><img src="images/sl1.jpg" alt="item1"/></td>
-						<td style="padding-right: 40px;"><img src="images/sl2.jpg" alt="item1"/></td>
-						<td style="padding-right: 40px;"><img src="images/sl1.jpg" alt="item1"/></td>
-						<td style="padding-right: 40px;"><img src="images/sl2.jpg" alt="item1"/></td>
-					</tr>
-					<tr>
-						<td style="padding-right: 40px;" align="center"><label>Sarma</label></td>
-						<td style="padding-right: 40px;" align="center"><label>Pljeska</label></td>
-						<td style="padding-right: 40px;" align="center"><label>Burek</label></td>
-						<td style="padding-right: 40px;" align="center"><label>Becka</label></td>
-						<td style="padding-right: 40px;" align="center"><label>Sarma</label></td>
-						<td style="padding-right: 40px;" align="center"><label>Pljeska</label></td>
-						<td style="padding-right: 40px;" align="center"><label>Burek</label></td>
-						<td style="padding-right: 40px;" align="center"><label>Becka</label></td>					
-					</tr>
-					<tr>
-						<td style="padding-right: 40px;" align="center"><label>150 RSD</label></td>
-						<td style="padding-right: 40px;" align="center"><label>120 RSD</label></td>
-						<td style="padding-right: 40px;" align="center"><label>135 RSD</label></td>
-						<td style="padding-right: 40px;" align="center"><label>200 RSD</label></td>
-						<td style="padding-right: 40px;" align="center"><label>150 RSD</label></td>
-						<td style="padding-right: 40px;" align="center"><label>120 RSD</label></td>
-						<td style="padding-right: 40px;" align="center"><label>135 RSD</label></td>
-						<td style="padding-right: 40px;" align="center"><label>200 RSD</label></td>					
-					</tr>
-					<tr>
-						<td style="padding-right: 40px;padding-bottom: 20px;" align="center"><a href="policies/details" class="btn btn-primary btn-lg">Details</a></td>
-						<td style="padding-right: 40px;padding-bottom: 20px;" align="center"><a href="policies/details" class="btn btn-primary btn-lg">Details</a></td>
-						<td style="padding-right: 40px;padding-bottom: 20px;" align="center"><a href="policies/details" class="btn btn-primary btn-lg">Details</a></td>
-						<td style="padding-right: 40px;padding-bottom: 20px;" align="center"><a href="policies/details" class="btn btn-primary btn-lg">Details</a></td>
-						<td style="padding-right: 40px;padding-bottom: 20px;" align="center"><a href="policies/details" class="btn btn-primary btn-lg">Details</a></td>
-						<td style="padding-right: 40px;padding-bottom: 20px;" align="center"><a href="policies/details" class="btn btn-primary btn-lg">Details</a></td>
-						<td style="padding-right: 40px;padding-bottom: 20px;" align="center"><a href="policies/details" class="btn btn-primary btn-lg">Details</a></td>
-						<td style="padding-right: 40px;padding-bottom: 20px;" align="center"><a href="policies/details" class="btn btn-primary btn-lg">Details</a></td>					
-					</tr>	
-					
-					<tr>
-						<td style="padding-right: 40px;"><img src="images/sl1.jpg" alt="item1"/></td>
-						<td style="padding-right: 40px;"><img src="images/sl2.jpg" alt="item1"/></td>
-						<td style="padding-right: 40px;"><img src="images/sl1.jpg" alt="item1"/></td>
-						<td style="padding-right: 40px;"><img src="images/sl2.jpg" alt="item1"/></td>
-						<td style="padding-right: 40px;"><img src="images/sl1.jpg" alt="item1"/></td>
-						<td style="padding-right: 40px;"><img src="images/sl2.jpg" alt="item1"/></td>
-						<td style="padding-right: 40px;"><img src="images/sl1.jpg" alt="item1"/></td>
-						<td style="padding-right: 40px;"><img src="images/sl2.jpg" alt="item1"/></td>
-					</tr>	
-					<tr>
-						<td style="padding-right: 40px;" align="center"><label>Sarma</label></td>
-						<td style="padding-right: 40px;" align="center"><label>Pljeska</label></td>
-						<td style="padding-right: 40px;" align="center"><label>Burek</label></td>
-						<td style="padding-right: 40px;" align="center"><label>Becka</label></td>
-						<td style="padding-right: 40px;" align="center"><label>Sarma</label></td>
-						<td style="padding-right: 40px;" align="center"><label>Pljeska</label></td>
-						<td style="padding-right: 40px;" align="center"><label>Burek</label></td>
-						<td style="padding-right: 40px;" align="center"><label>Becka</label></td>					
-					</tr>
-					<tr>
-						<td style="padding-right: 40px;" align="center"><label>150 RSD</label></td>
-						<td style="padding-right: 40px;" align="center"><label>120 RSD</label></td>
-						<td style="padding-right: 40px;" align="center"><label>135 RSD</label></td>
-						<td style="padding-right: 40px;" align="center"><label>200 RSD</label></td>
-						<td style="padding-right: 40px;" align="center"><label>150 RSD</label></td>
-						<td style="padding-right: 40px;" align="center"><label>120 RSD</label></td>
-						<td style="padding-right: 40px;" align="center"><label>135 RSD</label></td>
-						<td style="padding-right: 40px;" align="center"><label>200 RSD</label></td>					
-					</tr>
-					<tr>
-						<td style="padding-right: 40px;padding-bottom: 20px;" align="center"><a href="policies/details" class="btn btn-primary btn-lg">Details</a></td>
-						<td style="padding-right: 40px;padding-bottom: 20px;" align="center"><a href="policies/details" class="btn btn-primary btn-lg">Details</a></td>
-						<td style="padding-right: 40px;padding-bottom: 20px;" align="center"><a href="policies/details" class="btn btn-primary btn-lg">Details</a></td>
-						<td style="padding-right: 40px;padding-bottom: 20px;" align="center"><a href="policies/details" class="btn btn-primary btn-lg">Details</a></td>
-						<td style="padding-right: 40px;padding-bottom: 20px;" align="center"><a href="policies/details" class="btn btn-primary btn-lg">Details</a></td>
-						<td style="padding-right: 40px;padding-bottom: 20px;" align="center"><a href="policies/details" class="btn btn-primary btn-lg">Details</a></td>
-						<td style="padding-right: 40px;padding-bottom: 20px;" align="center"><a href="policies/details" class="btn btn-primary btn-lg">Details</a></td>
-						<td style="padding-right: 40px;padding-bottom: 20px;" align="center"><a href="policies/details" class="btn btn-primary btn-lg">Details</a></td>					
-					</tr>	-->									
+						<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+					</c:forEach>							
 				</table>
 			</div>
 		</section>

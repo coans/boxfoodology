@@ -2,6 +2,8 @@ package com.boxfoodology.controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
@@ -31,9 +33,24 @@ public class ItemController extends BaseController {
 	@Autowired
 	private CategoryRepository categoryRepository;
 	
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@RequestMapping(value = "{categoryId}", method = RequestMethod.GET)
 	public String itemsView(@PathVariable(value = "categoryId") Integer categoryId, ModelMap model) {
-		model.addAttribute("foods", foodRepository.findFoodByCategory(categoryId));
+		//for correct jsp display, set 4 items per row
+		List<Food> result = foodRepository.findFoodByCategory(categoryId);
+		List foods = new ArrayList<List>();
+		List<Food> oneRow = new ArrayList<Food>();
+		for (int i = 0;i < result.size();i++) {
+			if (i % 4 == 0) {
+				foods.add(oneRow);
+				oneRow = new ArrayList<Food>();
+				oneRow.add(result.get(i));
+			} else {
+				oneRow.add(result.get(i));
+			}
+		}
+		foods.add(oneRow);
+		model.addAttribute("foods", foods);
 		model.addAttribute("title", categoryRepository.findOne(categoryId).getTitle());
 		
 		return VIEW_ITEMS;

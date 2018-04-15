@@ -5,8 +5,9 @@
 <div class="container">
 	<div class="row">
 		<div class="col-xs-5">
-			<h3><spring:message code="food.header"/></h3>
+			<h3>${title}</h3>
 			<form:form modelAttribute="foodmodel" method="POST" action="${action}" enctype="multipart/form-data">
+				<form:hidden path="id" />
 				<div class="form-group">
 					<form:label path="name" class="required"><spring:message code="food.name"/></form:label>
 					<form:input path="name" type="text" class="form-control" />

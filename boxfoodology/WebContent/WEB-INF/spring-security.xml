@@ -12,7 +12,7 @@
 		<intercept-url pattern="/foods/**" access="hasRole('ROLE_ADMIN')" />
 		<form-login 
 		    login-page="/login" 
-		    default-target-url="/my/posts"
+		    default-target-url="/"
 			authentication-failure-url="/login?error" 
 			username-parameter="email"
 			password-parameter="password" />

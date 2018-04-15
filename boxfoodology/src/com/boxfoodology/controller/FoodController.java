@@ -58,6 +58,7 @@ public class FoodController extends BaseController {
 		FoodBean foodBean = new FoodBean();
 		model.addAttribute("foodmodel", foodBean);
 		model.addAttribute("action", CONTROLLER + "/create");
+		model.addAttribute("title", "Add new food");
 		model.addAttribute("categories", categoryRepository.findAll());
 		
 		return VIEW_NEW;
@@ -84,6 +85,7 @@ public class FoodController extends BaseController {
 		if (errors.hasErrors()) {
 			model.addAttribute("foodmodel", foodBean);
 			model.addAttribute("action", CONTROLLER + "/create");
+			model.addAttribute("title", "Add new food");
 			model.addAttribute("categories", categoryRepository.findAll());
 			return VIEW_NEW;
 		}
@@ -123,10 +125,37 @@ public class FoodController extends BaseController {
 		foodBean.setImageFile(multipartFile);*/
 		
 		model.addAttribute("foodmodel", foodBean);
-		model.addAttribute("action", CONTROLLER + "/create");
+		model.addAttribute("action", CONTROLLER + "/update");
+		model.addAttribute("title", "Edit food");
 		model.addAttribute("categories", categoryRepository.findAll());
 		
 		return VIEW_NEW;
+	}
+	
+	@RequestMapping(value = "update", method = RequestMethod.POST)
+	public String update(@ModelAttribute("foodmodel") FoodBean foodBean, Errors errors, ModelMap model,
+			final RedirectAttributes redirectAttributes) {
+
+		Food food = foodRepository.findOne(foodBean.getId());
+		food.setCategory(foodBean.getCategory());
+		food.setDescription(foodBean.getDescription());
+		food.setName(foodBean.getName());
+		food.setPrice(foodBean.getPrice());
+		//TODO fix picture
+		
+		validator.validate(food, errors);
+		
+		if (errors.hasErrors()) {
+			model.addAttribute("foodmodel", foodBean);
+			model.addAttribute("action", CONTROLLER + "/update");
+			model.addAttribute("title", "Edit food");
+			model.addAttribute("categories", categoryRepository.findAll());
+			return VIEW_NEW;
+		}
+		
+		foodRepository.save(food);
+		
+		return "redirect:/" + FoodController.CONTROLLER;
 	}
 	
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
