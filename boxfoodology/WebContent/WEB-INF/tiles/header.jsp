@@ -85,7 +85,7 @@
 						<li><a href="my/profile"><spring:message code="submenu.about.our.kitchen"/></a></li>
 						<li><a href="my/profile"><spring:message code="submenu.about.meet.chef"/></a></li>
 						<li><a href="my/profile"><spring:message code="submenu.about.careers"/></a></li>
-						<li><a href="my/profile"><spring:message code="submenu.about.contact"/></a></li>
+						<li><a href="messages"><spring:message code="submenu.about.contact"/></a></li>
 						<li><a href="my/profile"><spring:message code="submenu.about.find.us"/></a></li>
 					</ul>	
 				</li>	

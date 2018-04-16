@@ -82,6 +82,19 @@ CREATE TABLE `boxfoodology`.`myorder` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
   
+CREATE TABLE `boxfoodology`.`message` (
+  `id` BIGINT NOT NULL AUTO_INCREMENT,
+  `title` VARCHAR(50) NOT NULL,
+  `content` VARCHAR(800) NOT NULL,
+  `created` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `user_id` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_message_user_idx` (`user_id` ASC),
+  CONSTRAINT `fk_message_user`
+    FOREIGN KEY (`user_id`)
+    REFERENCES `boxfoodology`.`user` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
