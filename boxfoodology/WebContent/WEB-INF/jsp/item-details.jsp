@@ -8,7 +8,7 @@
 		<section id="about" class="section-blue">
 			<div class="container">
 			    <div class="col-md-4">
-			        <img class="img-responsive" src="items/image/${food.id}">
+			        <img class="thumbnail img-responsive" src="items/image/${food.id}">
 			    </div>
 			    <div class="col-md-8">
 			        <h3>${food.name}</h3>

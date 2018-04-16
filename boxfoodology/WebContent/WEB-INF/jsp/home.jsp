@@ -11,26 +11,29 @@
 				<p><i>Welcome to the best place in Dubai where you can order food. <a href="signup">Sign up</a> it's free, or <a href="login"><spring:message code="button.login"/></a></i></p>
 			</div>		
 			<div class="container text-center" style="padding-top: 0px;">
-				<table style="width:50%" align="center">
+				<table style="width:100%" align="center">
 				<tr>
-					<td style="padding-right: 20px;"><a href="items/1"><i class="fa fa-angle-double-down"></i>
-							<img src="images/cat1.jpg" title="Select Italian cuisine" height="250" width="375" />
+					<td style="padding-right: 20px;"><a href="items/1" class="thumbnail">
+							<img src="images/cat1.jpg" title="Select Italian cuisine"/>
 						</a>
 					</td>
-					<td style="padding-right: 20px;"><a href="items/2"><i class="fa fa-angle-double-down"></i>
-							<img src="images/cat2.jpg" title="Select Indian cuisine" height="250" width="375"/>
+					<td style="padding-right: 20px;"><a href="items/2" class="thumbnail">
+							<img src="images/cat2.jpg" title="Select Indian cuisine"/>
 						</a></td>
-					<td><a href="items/3"><i class="fa fa-angle-double-down"></i>
-							<img src="images/cat3.jpg" title="Select meals for two" height="250" width="375"/>
-						</a></td>				
+					<td><a href="items/3" class="thumbnail">
+							<img src="images/cat3.jpg" title="Select meals for two"/>
+						</a></td>									
 				</tr>
 				<tr>
-					<td style="padding-top: 40px; padding-right: 20px;"><a href="items/4"><i class="fa fa-angle-double-down"></i>
-							<img src="images/cat6.jpg" title="Ramadan food" height="250" width="375"/>
+					<td style="padding-top: 20px; padding-right: 20px;"><a href="items/4" class="thumbnail">
+							<img src="images/cat6.jpg" title="Ramadan food" />
 						</a></td>
-					<td style="padding-top: 40px; padding-right: 20px;"><a href="items/5"><i class="fa fa-angle-double-down"></i>
-							<img src="images/cat8.jpg" title="Select vegetarian" height="250" width="375"/>
+					<td style="padding-top: 20px; padding-right: 20px;"><a href="items/5" class="thumbnail">
+							<img src="images/cat8.jpg" title="Select vegetarian"/>
 						</a></td>
+					<td style="padding-top: 20px;"><a href="items/5" class="thumbnail">
+							<img src="images/cat8.jpg" title="Select vegetarian"/>
+						</a></td>						
 				</tr>
 				</table>
 			</div>
