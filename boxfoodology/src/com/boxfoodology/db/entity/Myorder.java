@@ -28,6 +28,8 @@ public class Myorder implements Serializable {
 	
 	@ManyToOne
 	private User user;
+	
+	private Integer quantity;
 
 	public Long getId() {
 		return id;
@@ -51,5 +53,13 @@ public class Myorder implements Serializable {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	public Integer getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(Integer quantity) {
+		this.quantity = quantity;
 	}
 }

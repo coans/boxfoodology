@@ -34,6 +34,7 @@
 							<th class="text-center">Food</th>
 							<th class="text-center">Category</th>
 							<th class="text-center">Price</th>
+							<th class="text-center">Quantity</th>
 							<th class="text-center">Action</th>
 						</tr>
 					</thead>
@@ -43,7 +44,8 @@
 								<td width="10%" align="center">${loop.count}</td>
 								<td width="30%" align="center">${order.food.name}</td>
 								<td width="20%" align="center">${order.food.category.title}</td>
-								<td width="20%" align="center">${order.food.price}</td>
+								<td width="10%" align="center">${order.food.price}</td>
+								<td width="10%" align="center">${order.quantity}</td>
 								<td width="20%" align="center">
 									<c:if test="${not confirmed}">
 										<a href="my/orders/add/${order.food.id}" title="Add one more item"><i class="glyphicon glyphicon-plus"></i></a>
@@ -53,8 +55,9 @@
 								</td>
 							</tr>
 						</c:forEach>
-						<tr><td colspan="5">&nbsp;</td></tr>
+						<tr><td colspan="6">&nbsp;</td></tr>
 						<tr>
+							<td class="active">&nbsp;</td>
 							<td class="active">&nbsp;</td>
 							<td class="active">&nbsp;</td>
 							<td class="active">&nbsp;</td>
@@ -63,6 +66,7 @@
 						</tr>
 						<tr>
 							<td>&nbsp;</td>						
+							<td>&nbsp;</td>
 							<td>&nbsp;</td>
 							<td>&nbsp;</td>
 							<td>&nbsp;</td>

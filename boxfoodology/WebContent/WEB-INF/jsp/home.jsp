@@ -31,8 +31,8 @@
 					<td style="padding-top: 20px; padding-right: 20px;"><a href="items/5" class="thumbnail">
 							<img src="images/cat8.jpg" title="Select vegetarian"/>
 						</a></td>
-					<td style="padding-top: 20px;"><a href="items/5" class="thumbnail">
-							<img src="images/cat8.jpg" title="Select vegetarian"/>
+					<td style="padding-top: 20px;"><a href="items/8" class="thumbnail">
+							<img src="images/cat4.jpg" title="Select fish"/>
 						</a></td>						
 				</tr>
 				</table>

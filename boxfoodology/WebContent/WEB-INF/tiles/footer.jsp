@@ -1,20 +1,21 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
+<%@taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
 <footer>
 	<div class="row">
 		<div class="col-xs-2" align="left">
 			<ul>
 				<li><h4><i>ABOUT</i></h4></li>
-				<li><a href="#">Our story</a></li><br/>
-				<li><a href="#">Careers</a></li><br/>
-				<li><a href="#">Contact</a></li><br/>
+				<li><a href="location/empty">Our story</a></li><br/>
+				<li><a href="location/empty">Careers</a></li><br/>
 			</ul>
 		</div>
 		<div class="col-xs-2" align="left">
 			<ul>
 				<li><h4><i>CONTACT</i></h4></li>
-				<li><a href="#">Contact us</a></li><br/>
-				<li><a href="#">Where to find us</a></li>
+				<li><a href="location">Where to find us</a></li>
+				<li><a href="messages/new"><spring:message code="submenu.about.contact"/></a></li>
 			</ul>
 		</div>
 		<div class="col-xs-2">

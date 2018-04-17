@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.Errors;
@@ -20,7 +19,6 @@ import com.boxfoodology.config.BaseController;
 import com.boxfoodology.db.entity.Message;
 import com.boxfoodology.db.repository.MessageRepository;
 
-@Secured("ROLE_USER")
 @Controller
 @RequestMapping(MessageController.CONTROLLER)
 public class MessageController extends BaseController {
@@ -69,6 +67,6 @@ public class MessageController extends BaseController {
 		
 		messageRepository.save(message);
 		
-		return "redirect:/" + MessageController.CONTROLLER;
+		return "redirect:/" + HomeController.CONTROLLER;
 	}
 }

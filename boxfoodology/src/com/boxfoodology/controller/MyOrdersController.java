@@ -56,16 +56,31 @@ public class MyOrdersController extends BaseController {
 	@SuppressWarnings("unchecked")
 	@RequestMapping(value = "add/{foodId}", method = RequestMethod.GET)
 	public String add(@PathVariable(value = "foodId") Integer foodId, HttpServletRequest request, ModelMap model) {
-		Food food = foodRepository.findOne(foodId);
-		Myorder order = new Myorder();
-		order.setFood(food);
-		order.setUser(super.getUser());
 		
 		if (request.getSession().getAttribute(getShoppingCartName()) == null) {
 			request.getSession().setAttribute(getShoppingCartName(), new ArrayList<Myorder>());
 		}
 		List<Myorder> orders =  (List<Myorder>)request.getSession().getAttribute(getShoppingCartName());
-		orders.add(order);
+		int index = 0;
+		boolean exist = false;
+		for (Myorder myorder : orders) {
+			if (myorder.getFood().getId() == foodId) {
+				exist = true;
+				break;
+			}
+			index++;
+		}
+		if (exist) {
+			orders.get(index).setQuantity(orders.get(index).getQuantity() + 1);
+		} else {
+			Food food = foodRepository.findOne(foodId);
+			Myorder order = new Myorder();
+			order.setFood(food);
+			order.setUser(super.getUser());
+			order.setQuantity(1);
+		
+			orders.add(order);
+		}
 		request.getSession().setAttribute(getShoppingCartName(), orders);
 
 		return "redirect:/" + UserPath.MY + MyOrdersController.CONTROLLER;
@@ -111,6 +126,7 @@ public class MyOrdersController extends BaseController {
 				myModel.put("user", getUser().getFirstName() + " " + getUser().getLastName() + " (" + dateFormat.format(new Date()) + ")");
 				emailUtil.sendMail(getUser().getEmail()/* TODO set kitchen mail*/, "New order received", "order.vm", myModel);
 				confirmed = true;
+				request.getSession().setAttribute(getShoppingCartName(), new ArrayList<Myorder>());
 			}
 		}
 		

@@ -81,7 +81,7 @@ public class BaseController {
 		BigDecimal price = BigDecimal.ZERO;
 		if (request.getSession().getAttribute(getShoppingCartName()) != null) {
 			for (Myorder myorder : (List<Myorder>)request.getSession().getAttribute(getShoppingCartName())) {
-				price = price.add(myorder.getFood().getPrice());
+				price = price.add(myorder.getFood().getPrice().multiply(new BigDecimal(myorder.getQuantity().toString())));
 			}
 		}
 		return price;

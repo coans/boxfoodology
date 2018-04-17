@@ -66,6 +66,7 @@ CREATE TABLE `boxfoodology`.`food` (
 CREATE TABLE `boxfoodology`.`myorder` (
   `id` BIGINT(20) NOT NULL AUTO_INCREMENT,
   `created` DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
+  `quantity` INT NOT NULL DEFAULT 1,
   `food_id` INT NOT NULL,
   `user_id` INT NOT NULL,
   PRIMARY KEY (`id`),
@@ -87,7 +88,7 @@ CREATE TABLE `boxfoodology`.`message` (
   `title` VARCHAR(50) NOT NULL,
   `content` VARCHAR(800) NOT NULL,
   `created` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `user_id` INT NOT NULL,
+  `user_id` INT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_message_user_idx` (`user_id` ASC),
   CONSTRAINT `fk_message_user`
