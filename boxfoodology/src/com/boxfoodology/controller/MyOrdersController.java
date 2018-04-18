@@ -54,8 +54,8 @@ public class MyOrdersController extends BaseController {
 	}
 	
 	@SuppressWarnings("unchecked")
-	@RequestMapping(value = "add/{foodId}", method = RequestMethod.GET)
-	public String add(@PathVariable(value = "foodId") Integer foodId, HttpServletRequest request, ModelMap model) {
+	@RequestMapping(value = "add/{foodId}/{quantity}", method = RequestMethod.GET)
+	public String add(@PathVariable(value = "foodId") Integer foodId, @PathVariable(value = "quantity") Integer quantity, HttpServletRequest request, ModelMap model) {
 		
 		if (request.getSession().getAttribute(getShoppingCartName()) == null) {
 			request.getSession().setAttribute(getShoppingCartName(), new ArrayList<Myorder>());
@@ -71,13 +71,13 @@ public class MyOrdersController extends BaseController {
 			index++;
 		}
 		if (exist) {
-			orders.get(index).setQuantity(orders.get(index).getQuantity() + 1);
+			orders.get(index).setQuantity(orders.get(index).getQuantity() + quantity);
 		} else {
 			Food food = foodRepository.findOne(foodId);
 			Myorder order = new Myorder();
 			order.setFood(food);
 			order.setUser(super.getUser());
-			order.setQuantity(1);
+			order.setQuantity(quantity);
 		
 			orders.add(order);
 		}

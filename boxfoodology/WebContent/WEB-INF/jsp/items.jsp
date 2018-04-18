@@ -31,8 +31,15 @@
 							<c:forEach items="${oneRow}" var="food">
 								<td style="padding-right: 40px;" style="padding-right: 40px;" align="center">
 									<div class="row">
-										<div class="col-sm-6" align="left"><label>${food.price} AED</label></div>
-										<div class="col-sm-6" align="right"><a href="my/orders/add/${food.id}" class="btn btn-primary btn-lg">Add</a></div>
+										<div class="col-sm-4" align="left"><label>${food.price} AED</label></div>
+										<div class="col-sm-4" align="left">
+											<select class="form-control" id="quantity${food.id}">
+				    							<option value="1" selected>1</option>
+				    							<option value="2">2</option>
+				    							<option value="3">3</option>
+				  							</select>
+				  						</div>
+										<div class="col-sm-4" align="right"><a href="javascript:add(${food.id})" class="btn btn-primary btn-lg">Add</a></div>
 									</div>
 								</td>
 							</c:forEach>
@@ -65,5 +72,10 @@
             scrollTop: $("#info").offset().top
         }, 750, function() { $(".btn-down").remove(); });
 	});
+	
+	function add(foodId) {
+		var baseUrl = "${baseurl}";
+		location.href = baseUrl + "my/orders/add/" + foodId + "/" + $("#quantity"+foodId).val();
+	}
 
 </script>

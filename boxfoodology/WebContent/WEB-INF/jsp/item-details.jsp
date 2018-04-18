@@ -13,8 +13,22 @@
 			    <div class="col-md-8">
 			        <h3>${food.name}</h3>
 			        <p>${food.description}</p> 
-			        <div class="row">
-						<div align="right"><label style="padding-right: 3%;">${food.price} AED</label><a href="my/orders/add/${food.id}" class="btn btn-primary btn-lg">Add</a></div>
+			        <div class="row" align="right">
+				        <div class="col-md-6">
+				        </div>
+						<div align="right" class="col-sm-2">
+							<label style="padding-right: 3%;">${food.price} AED</label>
+						</div>
+						<div align="right" class="col-sm-2">
+							<select class="form-control" id="quantity">
+    							<option value="1" selected>1</option>
+    							<option value="2">2</option>
+    							<option value="3">3</option>
+  							</select>
+  						</div>
+  						<div align="right" class="col-sm-1">
+  							<a class="btn btn-primary btn-lg" href="javascript:add(${food.id})">Add</a> <!-- href="my/orders/add/${food.id}" -->
+  						</div>
 					</div>
 					<br/>
 					<div class="panel-group" id="accordion">
@@ -87,5 +101,10 @@
             scrollTop: $("#info").offset().top
         }, 750, function() { $(".btn-down").remove(); });
 	});
+	
+	function add(foodId) {
+		var baseUrl = "${baseurl}";
+		location.href = baseUrl + "my/orders/add/" + foodId + "/" + $("#quantity").val();
+	}
 
 </script>

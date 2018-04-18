@@ -18,6 +18,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.boxfoodology.config.BaseController;
 import com.boxfoodology.db.entity.Message;
 import com.boxfoodology.db.repository.MessageRepository;
+import com.boxfoodology.validator.MessageValidator;
 
 @Controller
 @RequestMapping(MessageController.CONTROLLER)
@@ -30,7 +31,8 @@ public class MessageController extends BaseController {
 	@Autowired
 	private MessageRepository messageRepository;
 	
-	//TODO add validator
+	@Autowired
+	private MessageValidator validator;
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public String defaultView(ModelMap model, HttpServletRequest request, HttpSession session, Locale locale) {
@@ -51,13 +53,10 @@ public class MessageController extends BaseController {
 	}
 	
 	@RequestMapping(value = "create", method = RequestMethod.POST)
-	public String create(@ModelAttribute("message") Message message, Errors errors, ModelMap model,
-			final RedirectAttributes redirectAttributes) {
-
-			message.setCreated(new Date());
-			message.setUser(super.getUser());
-//TODO		validator.validate(food, errors);
-		
+	public String create(@ModelAttribute("message") Message message, Errors errors, ModelMap model, final RedirectAttributes redirectAttributes) {
+		message.setCreated(new Date());
+		message.setUser(super.getUser());
+		validator.validate(message, errors);
 		if (errors.hasErrors()) {
 			model.addAttribute("message", message);
 			model.addAttribute("action", CONTROLLER + "/create");

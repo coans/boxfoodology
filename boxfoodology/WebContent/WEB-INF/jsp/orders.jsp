@@ -48,7 +48,7 @@
 								<td width="10%" align="center">${order.quantity}</td>
 								<td width="20%" align="center">
 									<c:if test="${not confirmed}">
-										<a href="my/orders/add/${order.food.id}" title="Add one more item"><i class="glyphicon glyphicon-plus"></i></a>
+										<a href="my/orders/add/${order.food.id}/1" title="Add one more item"><i class="glyphicon glyphicon-plus"></i></a>
 										&nbsp;
 										<a href="my/orders/delete/${order.food.id}" title="Delete from order"><i class="glyphicon glyphicon-remove"></i></a>
 									</c:if>
