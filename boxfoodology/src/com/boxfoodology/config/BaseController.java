@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
 import com.boxfoodology.auth.AuthorizationService;
+import com.boxfoodology.db.entity.Food;
 import com.boxfoodology.db.entity.Myorder;
 import com.boxfoodology.db.entity.User;
 
@@ -34,6 +35,7 @@ public class BaseController {
 	public static final String MODEL_USER = "user";
 	public static final String MODEL_NUMBER_OF_ORDERED_ITEMS = "numberOfOrderedItems";
 	public static final String MODEL_PRICE_OF_ORDERED_ITEMS = "priceOfOrderedItems";
+	public static final String MODEL_SEARCH = "search";
 
 	private static final String BASEURL = "baseurl";
 	private static final String VERISON = "verison";
@@ -61,6 +63,12 @@ public class BaseController {
 		return baseUrl;
 	}
 
+	
+	@ModelAttribute(MODEL_SEARCH)
+	public Food getSearch() {
+		return new Food();
+	}
+	
 	@ModelAttribute(VERISON)
 	public String getProductVersion() {
 		return productVersion;

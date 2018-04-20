@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -33,11 +34,18 @@ public class ItemController extends BaseController {
 	@Autowired
 	private CategoryRepository categoryRepository;
 	
-	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@RequestMapping(value = "{categoryId}", method = RequestMethod.GET)
 	public String itemsView(@PathVariable(value = "categoryId") Integer categoryId, ModelMap model) {
 		//for correct jsp display, set 4 items per row
 		List<Food> result = foodRepository.findFoodByCategory(categoryId);
+		String title = categoryRepository.findOne(categoryId).getTitle();
+		prepareListOfFoodForJsp(model, result, title);
+		
+		return VIEW_ITEMS;
+	}
+
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	private void prepareListOfFoodForJsp(ModelMap model, List<Food> result, String title) {
 		List foods = new ArrayList<List>();
 		List<Food> oneRow = new ArrayList<Food>();
 		for (int i = 0;i < result.size();i++) {
@@ -51,9 +59,7 @@ public class ItemController extends BaseController {
 		}
 		foods.add(oneRow);
 		model.addAttribute("foods", foods);
-		model.addAttribute("title", categoryRepository.findOne(categoryId).getTitle());
-		
-		return VIEW_ITEMS;
+		model.addAttribute("title", title);
 	}
 	
 	@RequestMapping(value = "image/{foodId}", method = RequestMethod.GET)
@@ -72,5 +78,13 @@ public class ItemController extends BaseController {
 		model.addAttribute("food", foodRepository.findOne(foodId));
 		
 		return VIEW_DETAILS;
+	}
+	
+	@RequestMapping(value = "search", method = RequestMethod.POST)
+	public String search(@ModelAttribute("search") Food search, ModelMap model) {
+		List<Food> result = foodRepository.findFoodBySearchCriteria("%" + search.getName()+ "%", "%" + search.getName()+ "%");
+		prepareListOfFoodForJsp(model, result, "Search result");
+		
+		return VIEW_ITEMS;
 	}
 }
