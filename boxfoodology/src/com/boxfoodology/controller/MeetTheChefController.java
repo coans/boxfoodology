@@ -13,11 +13,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.boxfoodology.config.BaseController;
 
 @Controller
-@RequestMapping(OurStoryController.CONTROLLER)
-public class OurStoryController extends BaseController {
+@RequestMapping(MeetTheChefController.CONTROLLER)
+public class MeetTheChefController extends BaseController {
 	
-	public static final String CONTROLLER = "our-story";
-	public static final String VIEW_DEFAULT = "our-story";
+	public static final String CONTROLLER = "meet-the-chef";
+	public static final String VIEW_DEFAULT = "meet-the-chef";
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public String defaultView(ModelMap model, HttpServletRequest request, HttpSession session, Locale locale) {

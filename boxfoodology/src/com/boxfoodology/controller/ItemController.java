@@ -83,7 +83,7 @@ public class ItemController extends BaseController {
 	@RequestMapping(value = "search", method = RequestMethod.POST)
 	public String search(@ModelAttribute("search") Food search, ModelMap model) {
 		List<Food> result = foodRepository.findFoodBySearchCriteria("%" + search.getName()+ "%", "%" + search.getName()+ "%");
-		prepareListOfFoodForJsp(model, result, "Search result");
+		prepareListOfFoodForJsp(model, result, "\"" + search.getName() + "\"");
 		
 		return VIEW_ITEMS;
 	}

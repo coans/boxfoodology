@@ -81,10 +81,10 @@
 				<li>
 					<a class="dropdown-toggle"	data-toggle="dropdown" href="#mains"><spring:message code="menu.about.us"/><span class="caret"></span></a>
 					<ul class="dropdown-menu">
-						<li><a href="ourstory"><spring:message code="submenu.about.our.story"/></a></li>
+						<li><a href="our-story"><spring:message code="submenu.about.our.story"/></a></li>
 <%-- 						<li><a href="location/empty"><spring:message code="submenu.about.our.values"/></a></li>
 						<li><a href="location/empty"><spring:message code="submenu.about.our.kitchen"/></a></li> --%>
-						<li><a href="location/empty"><spring:message code="submenu.about.meet.chef"/></a></li>
+						<li><a href="meet-the-chef"><spring:message code="submenu.about.meet.chef"/></a></li>
 						<li><a href="location/empty"><spring:message code="submenu.about.careers"/></a></li>
 						<li><a href="messages/new"><spring:message code="submenu.about.contact"/></a></li>
 						<li><a href="location"><spring:message code="submenu.about.find.us"/></a></li>
