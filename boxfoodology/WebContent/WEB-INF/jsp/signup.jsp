@@ -37,6 +37,20 @@
 					</div>
 				</div>
 				<div class="form-group">
+					<form:label path="address" class="required"><spring:message code="signup.page.address"/></form:label>
+					<form:input type="text" path="address" class="form-control"/>
+					<div class="has-error">
+						<form:errors path="address" cssClass="help-block" element="label"/>
+					</div>
+				</div>	
+				<div class="form-group">
+					<form:label path="phone" class="required"><spring:message code="signup.page.phone"/></form:label>
+					<form:input type="text" path="phone" class="form-control"/>
+					<div class="has-error">
+						<form:errors path="phone" cssClass="help-block" element="label"/>
+					</div>
+				</div>							
+				<div class="form-group">
 					<form:label path="gender" class="required"><spring:message code="signup.page.gender"/></form:label><br/>
 					<label class="radio-inline">
 						<form:radiobutton value="Female" path="gender"/>

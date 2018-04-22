@@ -15,6 +15,8 @@ CREATE TABLE IF NOT EXISTS `boxfoodology`.`user` (
   `password` VARCHAR(80) NOT NULL,
   `first_name` VARCHAR(45) NOT NULL,
   `last_name` VARCHAR(45) NOT NULL,
+  `address` VARCHAR(500) NOT NULL,
+  `phone` VARCHAR(45) NOT NULL,
   `gender` ENUM('Female', 'Male') NOT NULL,
   `uuid` VARCHAR(45) NULL DEFAULT NULL,
   `created` DATETIME NOT NULL,

@@ -40,7 +40,11 @@ public class User implements Serializable {
 
 	@Column(name="last_name")
 	private String lastName;
+	
+	private String address;
 
+	private String phone;
+	
 	private String password;
 
 	private String status;
@@ -156,5 +160,21 @@ public class User implements Serializable {
 
 	public void setRole(String role) {
 		this.role = role;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 }

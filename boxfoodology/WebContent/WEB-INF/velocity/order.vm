@@ -4,6 +4,8 @@
 	<body style="margin: 0px;">
 		<p>Hi,</p>
 		<p>You have received new order from user <b>${user}</b>, see below</p>
+		<p>Delivery address: <b>${address}</b></p>
+		<p>Contact phone: <b>${phone}</b>
 		<table border="2" class="table table-striped" style="width: 100%; background: #f1f0e8; border-spacing: 0px; font-family: Helvetica Neue,Helvetica,Arial,sans-serif; font-size: 14px; line-height: 1.42857;">
 			<thead>
 				<tr>
