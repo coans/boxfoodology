@@ -102,9 +102,9 @@
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li>
-					<form:form class="form-inline" modelAttribute="search" method="POST" action="items/search" style="padding-top: 5px;">
-						<form:input style="width:100px;" path="name" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" width="25px"/>
-						<button class="btn btn-outline-success my-2 my-sm-0" type="submit"><img alt="Search" src="images/search.png"></button>
+					<form:form class="form-inline" modelAttribute="search" method="POST" action="items/search" style="padding-top: 7px;">
+						<form:input style="width:150px;" path="name" class="form-control mr-sm-2" type="search" placeholder="Search"/>
+						<!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><img style="opacity:0.5;" alt="Search" src="images/search.png"></button> -->
 					</form:form>
 				</li>
 				<li><a href="my/orders"><spring:message code="button.my.orders"/><span class="badge">${numberOfOrderedItems}</span></a></li>
