@@ -7,7 +7,7 @@
 		<div class="col-xs-2" align="left">
 			<ul>
 				<li><h4><i>ABOUT</i></h4></li>
-				<li><a href="location/empty">Our story</a></li><br/>
+				<li><a href="ourstory">Our story</a></li><br/>
 				<li><a href="location/empty">Careers</a></li><br/>
 			</ul>
 		</div>

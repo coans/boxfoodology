@@ -4,7 +4,7 @@
 
 <div id="home">
 	<div class="section-container">
-	<jsp:include page="home_picture.jsp"/>
+	<jsp:include page="home-picture.jsp"/>
 		
 		<section id="about" class="section-blue">
 			<div class="moving-text">

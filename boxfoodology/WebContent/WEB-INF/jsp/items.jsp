@@ -4,7 +4,7 @@
 
 <div id="home">
 	<div class="section-container">
-		<jsp:include page="home_picture.jsp"/>		
+		<jsp:include page="home-picture.jsp"/>		
 		<section id="about" class="section-blue">
 			<div class="moving-text">
 				<h3 style="width:100%; font-family:georgia;" align="center"><i>List of <b>${title}</b> food</i></h3>
