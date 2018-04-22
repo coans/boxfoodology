@@ -38,7 +38,7 @@
 				</div>
 				<div class="form-group">
 					<form:label path="address" class="required"><spring:message code="signup.page.address"/></form:label>
-					<form:input type="text" path="address" class="form-control"/>
+					<form:textarea type="text" path="address" class="form-control" placeholder="This address is used for delivery, please, enter as precise as possible"/>
 					<div class="has-error">
 						<form:errors path="address" cssClass="help-block" element="label"/>
 					</div>
