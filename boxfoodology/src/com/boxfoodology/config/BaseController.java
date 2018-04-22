@@ -47,6 +47,9 @@ public class BaseController {
 	@Value("${product.version}")
 	protected String productVersion;
 	
+	@Value("${mail.address}")
+	protected String kitchenMail;
+	
 	@InitBinder
 	protected void initBinder(WebDataBinder binder) {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
@@ -114,5 +117,9 @@ public class BaseController {
 			return SHOPPING_CART + getUser().getId();
 		}
 		return "";
+	}
+
+	public String getKitchenMail() {
+		return kitchenMail;
 	}
 }

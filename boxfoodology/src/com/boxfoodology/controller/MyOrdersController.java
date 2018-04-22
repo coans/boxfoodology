@@ -126,7 +126,7 @@ public class MyOrdersController extends BaseController {
 				myModel.put("user", getUser().getFirstName() + " " + getUser().getLastName() + " (" + dateFormat.format(new Date()) + ")");
 				myModel.put("address", getUser().getAddress());
 				myModel.put("phone", getUser().getPhone());
-				emailUtil.sendMail(getUser().getEmail()/* TODO set kitchen mail*/, "New order received", "order.vm", myModel);
+				emailUtil.sendMail(getKitchenMail(), "New order received", "order.vm", myModel);
 				confirmed = true;
 				request.getSession().setAttribute(getShoppingCartName(), new ArrayList<Myorder>());
 			}
