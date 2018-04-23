@@ -96,6 +96,7 @@
 						<ul class="dropdown-menu">
 							<li><a href="foods"><spring:message code="food.menu"/></a></li>
 							<li><a href="messages">Messages</a></li>
+							<li><a href="bestsellers">Bestsellers</a></li>
 						</ul>
 					</li>
 				</sec:authorize>

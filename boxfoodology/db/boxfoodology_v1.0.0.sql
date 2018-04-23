@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS `boxfoodology`.`user` (
   `phone` VARCHAR(45) NOT NULL,
   `gender` ENUM('Female', 'Male') NOT NULL,
   `uuid` VARCHAR(45) NULL DEFAULT NULL,
-  `created` DATETIME NOT NULL,
+  `created` DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
   `status` ENUM('Active','Inactive') NOT NULL,
   `role` VARCHAR(20) NOT NULL DEFAULT 'ROLE_USER',
   PRIMARY KEY (`id`))
@@ -46,6 +46,7 @@ CREATE TABLE IF NOT EXISTS `boxfoodology`.`category` (
   `id` INT(11) NOT NULL AUTO_INCREMENT,
   `title` VARCHAR(50) NOT NULL,
   `image` MEDIUMBLOB NULL,
+  `created` DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
@@ -58,6 +59,7 @@ CREATE TABLE `boxfoodology`.`food` (
   `price` DECIMAL(10,2) NOT NULL,
   `deleted` TINYINT(1) NULL DEFAULT 0,
   `category_id` INT(11) NOT NULL,
+  `created` DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   CONSTRAINT `fk_food_category`
   FOREIGN KEY (`category_id`)
@@ -91,6 +93,7 @@ CREATE TABLE `boxfoodology`.`message` (
   `content` VARCHAR(800) NOT NULL,
   `created` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `user_id` INT NULL,
+  `created` DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   INDEX `fk_message_user_idx` (`user_id` ASC),
   CONSTRAINT `fk_message_user`
@@ -99,6 +102,18 @@ CREATE TABLE `boxfoodology`.`message` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
+CREATE TABLE `boxfoodology`.`bestseller` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `food_id` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_food_bestseller_idx` (`food_id` ASC),
+  CONSTRAINT `fk_food_bestseller`
+    FOREIGN KEY (`food_id`)
+    REFERENCES `boxfoodology`.`food` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+   
+    
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;

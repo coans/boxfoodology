@@ -11,6 +11,7 @@
 		<intercept-url pattern="/my/**" access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')" />
 		<intercept-url pattern="/foods/**" access="hasRole('ROLE_ADMIN')" />
 		<intercept-url pattern="/messages" access="hasRole('ROLE_ADMIN')" />
+		<intercept-url pattern="/bestsellers/**" access="hasRole('ROLE_ADMIN')" />
 		<form-login 
 		    login-page="/login" 
 		    default-target-url="/"
