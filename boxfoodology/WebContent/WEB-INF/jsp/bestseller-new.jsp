@@ -17,7 +17,7 @@
 				</div>
 				<p>&nbsp;</p>					
 				<button type="submit" class="btn btn btn-primary"><spring:message code="button.save"/></button>
-				<a class="btn btn-success" href="foods"><spring:message code="button.cancel"/></a>
+				<a class="btn btn-success" href="bestsellers"><spring:message code="button.cancel"/></a>
 			</form:form>
 		</div>
 	</div>

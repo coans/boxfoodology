@@ -1,12 +1,41 @@
 # Careers page
 # slike
 # tekstovi
-# za hranu opis, kolicina (odabir)
+# za hranu opis, kolicina, nutritivna vrijednost
 # soups meni (i sides) prebaciti u mains menu
 # FAQ (uputstvo)
 # drustvene mreze
 # omoguciti dodavanje glavnih kategorija
 # SEO
 # domen+hosting www.boxfoodology.com
+# validacija na upload slika (w/h)
+# kod brisanja napraviti confirm dijalog
 
-# konfiguracija bestseller-a  validacija, max br, delete, dodati na home
+450x390 px
+chicken
+beef
+lamb
+fish
+vegetarian
+vegan
+meals for one
+meals for two
+family meals
+thai
+italian
+maroccan
+french
+british
+korean
+mexican
+chinese
+japanese
+soups
+sides
+ramadan
+easter
+christmas
+private events
+catering
+
+ostalo(pod kategorije)

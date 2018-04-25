@@ -13,6 +13,7 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -39,6 +40,7 @@ public class BestsellerController extends BaseController {
 	@RequestMapping(method = RequestMethod.GET)
 	public String defaultView(ModelMap model, HttpServletRequest request, HttpSession session, Locale locale) {
 		model.addAttribute("bestsellers", bestsellerRepository.findAll());
+		model.addAttribute("full", bestsellerRepository.findAll().size() >= 12);
 		
 		return VIEW_DEFAULT;
 	}
@@ -117,16 +119,14 @@ public class BestsellerController extends BaseController {
 		
 		return "redirect:/" + BestsellerController.CONTROLLER;
 	}
-	
+	*/
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
-	public String delete(@PathVariable(value = "id") Integer foodId) {
-		Food food = foodRepository.findOne(foodId);
-		food.setDeleted(true);
-		foodRepository.save(food);
+	public String delete(@PathVariable(value = "id") Integer bestsellerId) {
+		bestsellerRepository.delete(bestsellerId);
 		
 		return "redirect:/" + BestsellerController.CONTROLLER;
 	}
-	*/
+	
 	@Override
 	@InitBinder
 	protected void initBinder(WebDataBinder binder) {

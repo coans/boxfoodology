@@ -42,85 +42,73 @@
 			<h3 align="center"><i><spring:message code="carousel.bestsellers"/></i></h3>
 			<!-- Indicators -->
 			<ol class="carousel-indicators">
+				<c:if test="${not empty bestsellerPageOne}">
 				<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-				<li data-target="#myCarousel" data-slide-to="1"></li>
-				<li data-target="#myCarousel" data-slide-to="2"></li>
+				</c:if>
+				<c:if test="${not empty bestsellerPageTwo}">
+					<li data-target="#myCarousel" data-slide-to="1"></li>
+				</c:if>
+				<c:if test="${not empty bestsellerPageThree}">
+					<li data-target="#myCarousel" data-slide-to="2"></li>
+				</c:if>
 			</ol>
 
 			<!-- Wrapper for slides -->
 			<div class="carousel-inner" align="center">
-				<div class="item active" style="margin-bottom: 2%;">
-					<div class="row">
-						<div class="col-xs-2" style="margin-left: 17%;">
-							<a href="items/1"><i class="fa fa-angle-double-down"></i>
-								<img src="images/cat1.jpg" alt="Slide 1" height="148" width="170">
-							</a>
+				<c:if test="${not empty bestsellerPageOne}">
+					<div class="item active" style="margin-bottom: 2%;">
+						<div class="row">
+							<c:forEach items="${bestsellerPageOne}" var="bestseller" varStatus="loop">
+								<c:if test="${loop.index == 0}">
+									<div class="col-xs-2" style="margin-left: 17%;">
+								</c:if>
+								<c:if test="${loop.index != 0}">
+									<div class="col-xs-2">
+								</c:if>
+								<a href="items/details/${bestseller.food.id}"><i class="fa fa-angle-double-down"></i>
+									<img src="items/image/${bestseller.food.id}" alt="Slide 1" height="148" width="170">
+								</a>
+							</div>
+							</c:forEach>																	
 						</div>
-						<div class="col-xs-2">
-							<a href="items/2"><i class="fa fa-angle-double-down"></i>
-								<img src="images/cat2.jpg" alt="Slide 1" height="148" width="170">
-							</a>
-						</div>
-						<div class="col-xs-2">
-							<a href="items/3"><i class="fa fa-angle-double-down"></i>
-								<img src="images/cat3.jpg" alt="Slide 1" height="148" width="170">
-							</a>
-						</div>	
-						<div class="col-xs-2">
-							<a href="items/11"><i class="fa fa-angle-double-down"></i>
-								<img src="images/cat5.jpg" alt="Slide 1" height="148" width="170">
-							</a>
-						</div>																	
 					</div>
-				</div>
-				<div class="item" style="margin-bottom: 2%;">
-					<div class="row">
-						<div class="col-xs-2" style="margin-left: 17%;">
-							<a href="items/8"><i class="fa fa-angle-double-down"></i>
-								<img src="images/cat4.jpg" alt="Slide 1" height="148" width="170">
-							</a>
+				</c:if>
+				<c:if test="${not empty bestsellerPageTwo}">
+					<div class="item" style="margin-bottom: 2%;">
+						<div class="row">
+							<c:forEach items="${bestsellerPageTwo}" var="bestseller" varStatus="loop">
+								<c:if test="${loop.index == 0}">
+									<div class="col-xs-2" style="margin-left: 17%;">
+								</c:if>
+								<c:if test="${loop.index != 0}">
+									<div class="col-xs-2">
+								</c:if>
+								<a href="items/details/${bestseller.food.id}"><i class="fa fa-angle-double-down"></i>
+									<img src="items/image/${bestseller.food.id}" alt="Slide 1" height="148" width="170">
+								</a>
+							</div>
+							</c:forEach>																		
 						</div>
-						<div class="col-xs-2">
-							<a href="items/11"><i class="fa fa-angle-double-down"></i>
-								<img src="images/cat5.jpg" alt="Slide 1" height="148" width="170">
-							</a>
-						</div>
-						<div class="col-xs-2">
-							<a href="items/4"><i class="fa fa-angle-double-down"></i>
-								<img src="images/cat6.jpg" alt="Slide 1" height="148" width="170">
-							</a>
-						</div>
-						<div class="col-xs-2">
-							<a href="items/1"><i class="fa fa-angle-double-down"></i>
-								<img src="images/cat1.jpg" alt="Slide 1" height="148" width="170">
-							</a>
-						</div>																		
 					</div>
-				</div>
-				<div class="item" style="margin-bottom: 2%;">
-					<div class="row">
-						<div class="col-xs-2" style="margin-left: 17%;">
-							<a href="policies/items"><i class="fa fa-angle-double-down"></i>
-								<img src="images/cat7.jpg" alt="Slide 1" height="148" width="170">
-							</a>
+				</c:if>
+				<c:if test="${not empty bestsellerPageThree}">
+					<div class="item" style="margin-bottom: 2%;">
+						<div class="row">
+							<c:forEach items="${bestsellerPageThree}" var="bestseller" varStatus="loop">
+								<c:if test="${loop.index == 0}">
+									<div class="col-xs-2" style="margin-left: 17%;">
+								</c:if>
+								<c:if test="${loop.index != 0}">
+									<div class="col-xs-2">
+								</c:if>
+								<a href="items/details/${bestseller.food.id}"><i class="fa fa-angle-double-down"></i>
+									<img src="items/image/${bestseller.food.id}" alt="Slide 1" height="148" width="170">
+								</a>
+							</div>
+							</c:forEach>																		
 						</div>
-						<div class="col-xs-2">
-							<a href="policies/items"><i class="fa fa-angle-double-down"></i>
-								<img src="images/cat8.jpg" alt="Slide 1" height="148" width="170">
-							</a>
-						</div>
-						<div class="col-xs-2">
-							<a href="policies/items"><i class="fa fa-angle-double-down"></i>
-								<img src="images/cat4.jpg" alt="Slide 1" height="148" width="170">
-							</a>
-						</div>
-						<div class="col-xs-2">
-							<a href="policies/items"><i class="fa fa-angle-double-down"></i>
-								<img src="images/cat5.jpg" alt="Slide 1" height="148" width="170">
-							</a>
-						</div>																		
 					</div>
-				</div>
+				</c:if>
 			</div>
 
 			<!-- Left and right controls -->

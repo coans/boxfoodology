@@ -3,7 +3,17 @@
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <div class="container">
-	<p><a href="bestsellers/new" class="btn btn-info">New food to bestseller</a></p>
+	<c:if test="${not full}">
+		<p><a href="bestsellers/new" class="btn btn-info">New food to bestseller</a></p>
+	</c:if>
+	<c:if test="${full}">
+	 	<div class="alert alert-info alert-dismissible" role="alert">
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				<span aria-hidden="true">×</span>
+			</button>
+			<div align="center"><strong>Bestseller is full. First delete old item(s) and then add new.</strong></div>
+	    </div>		
+	</c:if>	
 	<table class="table table-striped">
 		<thead>
 			<tr>
@@ -13,14 +23,14 @@
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach items="${bestsellers}" var="bestseller">	
+			<c:forEach items="${bestsellers}" var="bestseller" varStatus="loop">	
 				<tr>
-					<td align="center">${bestseller.id}</td>
+					<td align="center">${loop.count}</td>
 					<td align="center">${bestseller.food.name}</td>
 					<td align="center">
-						<a href="foods/edit/${food.id}" title="Edit"><i class="glyphicon glyphicon-pencil"></i></a>
-						&nbsp;
-						<a href="foods/delete/${food.id}" title="Delete"><i class="glyphicon glyphicon-remove"></i></a>
+					<%-- 	<a href="bestsellers/edit/${food.id}" title="Edit"><i class="glyphicon glyphicon-pencil"></i></a>
+						&nbsp; --%>
+						<a href="bestsellers/delete/${bestseller.id}" title="Delete"><i class="glyphicon glyphicon-remove"></i></a>
 					</td>
 				</tr>
 			</c:forEach>
