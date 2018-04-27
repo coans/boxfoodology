@@ -10,6 +10,7 @@ package com.boxfoodology.config;
 
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -40,6 +41,7 @@ public class BaseController {
 	private static final String BASEURL = "baseurl";
 	private static final String VERISON = "verison";
 	private static final String SHOPPING_CART = "shopping_cart_";
+	private static final String QUANTITY = "quantity";
 	
 	@Value("${base.url}")
 	protected String baseUrl;
@@ -75,6 +77,11 @@ public class BaseController {
 	@ModelAttribute(VERISON)
 	public String getProductVersion() {
 		return productVersion;
+	}
+	
+	@ModelAttribute(QUANTITY)
+	public List<Integer> getQuantity() {
+		return Arrays.asList(1,2,3,4,5,6,7,8,9,10);
 	}
 	
 	@SuppressWarnings("unchecked")

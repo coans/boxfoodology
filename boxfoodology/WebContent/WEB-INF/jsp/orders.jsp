@@ -31,6 +31,7 @@
 					<thead>
 						<tr>
 							<th class="text-center">#</th>
+							<th class="text-center">Image</th> 
 							<th class="text-center">Food</th>
 							<th class="text-center">Category</th>
 							<th class="text-center">Price</th>
@@ -42,6 +43,7 @@
 						<c:forEach items="${orders}" var="order" varStatus="loop">	
 							<tr>
 								<td width="10%" align="center">${loop.count}</td>
+								<td align="center"><img class="thumbnail img-responsive" src="items/image/${order.food.id}" style="margin-bottom: 2px;"></td>
 								<td width="30%" align="center">${order.food.name}</td>
 								<td width="20%" align="center">${order.food.category.title}</td>
 								<td width="10%" align="center">${order.food.price}</td>
@@ -50,13 +52,14 @@
 									<c:if test="${not confirmed}">
 										<a href="my/orders/add/${order.food.id}/1" title="Add one more item"><i class="glyphicon glyphicon-plus"></i></a>
 										&nbsp;
-										<a href="my/orders/delete/${order.food.id}" title="Delete from order"><i class="glyphicon glyphicon-remove"></i></a>
+										<a href="#" data-href="my/orders/delete/${order.food.id}" data-toggle="modal" data-target="#confirmDeleteId" title="Delete from order"><i class="glyphicon glyphicon-remove"></i></a>
 									</c:if>
 								</td>
 							</tr>
 						</c:forEach>
-						<tr><td colspan="6">&nbsp;</td></tr>
+						<tr><td colspan="7">&nbsp;</td></tr>
 						<tr>
+							<td class="active">&nbsp;</td>
 							<td class="active">&nbsp;</td>
 							<td class="active">&nbsp;</td>
 							<td class="active">&nbsp;</td>
@@ -65,6 +68,7 @@
 							<td class="success">${priceOfOrderedItems} AED</td>						
 						</tr>
 						<tr>
+							<td>&nbsp;</td>
 							<td>&nbsp;</td>						
 							<td>&nbsp;</td>
 							<td>&nbsp;</td>
@@ -83,7 +87,18 @@
 		</section>
 	</div>
 </div>
-
+<div class="modal fade" id="confirmDeleteId" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" align="center"><b>Confirm Delete</b></div>
+            <div class="modal-body" align="center">Are you sure you want to delete this item?</div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <a class="btn btn-danger btn-ok">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
 <script type="text/javascript">
 	// default navigation	
 	if(window.location.href == '<c:out value="${baseurl}"/>#about') {
@@ -104,5 +119,8 @@
             scrollTop: $("#info").offset().top
         }, 750, function() { $(".btn-down").remove(); });
 	});
-
+	
+	$('#confirmDeleteId').on('show.bs.modal', function(e) {
+	    $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
+	});
 </script>

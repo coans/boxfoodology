@@ -1,6 +1,7 @@
 <%@ taglib prefix='c' uri='http://java.sun.com/jsp/jstl/core' %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <div id="home">
 	<div class="section-container">
@@ -20,14 +21,10 @@
 							<label style="padding-right: 3%;">${food.price} AED</label>
 						</div>
 						<div align="right" class="col-sm-2">
-							<select class="form-control" id="quantity">
-    							<option value="1" selected>1</option>
-    							<option value="2">2</option>
-    							<option value="3">3</option>
-  							</select>
+							<form:select path="food.description" class="form-control" id="quantity" items="${quantity}"/>
   						</div>
   						<div align="right" class="col-sm-1">
-  							<a class="btn btn-primary btn-lg" href="javascript:add(${food.id})">Add</a> <!-- href="my/orders/add/${food.id}" -->
+  							<a class="btn btn-primary btn-lg" href="javascript:add(${food.id})">Add</a>
   						</div>
 					</div>
 					<br/>
