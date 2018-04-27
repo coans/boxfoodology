@@ -1,6 +1,10 @@
 package com.boxfoodology.validator;
 
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.sql.SQLException;
+
+import javax.imageio.ImageIO;
 
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,8 +57,16 @@ public class FoodValidator implements Validator {
 				errors.rejectValue("imageFile", "error.notempty");
 			} else if (food.getImage().length() > 16777215) {
 				errors.rejectValue("imageFile", "error.food.image.too.big");
+			} else {
+				BufferedImage image = ImageIO.read(food.getImage().getBinaryStream());
+				if (image.getHeight() > 395 || image.getWidth() > 455) {
+					errors.rejectValue("imageFile", "error.foog.image.dimension");
+				}
 			}
 		} catch (SQLException e) {
+			errors.rejectValue("imageFile", "error.notempty");
+			e.printStackTrace();
+		} catch (IOException e) {
 			errors.rejectValue("imageFile", "error.notempty");
 			e.printStackTrace();
 		}
