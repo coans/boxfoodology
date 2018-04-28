@@ -68,6 +68,7 @@
 								<a href="items/details/${bestseller.food.id}"><i class="fa fa-angle-double-down"></i>
 									<img src="items/image/${bestseller.food.id}" alt="Slide 1" height="148" width="170">
 								</a>
+								<label>${bestseller.food.name}</label>
 							</div>
 							</c:forEach>																	
 						</div>
@@ -86,6 +87,7 @@
 								<a href="items/details/${bestseller.food.id}"><i class="fa fa-angle-double-down"></i>
 									<img src="items/image/${bestseller.food.id}" alt="Slide 1" height="148" width="170">
 								</a>
+								<label>${bestseller.food.name}</label>
 							</div>
 							</c:forEach>																		
 						</div>
@@ -104,6 +106,7 @@
 								<a href="items/details/${bestseller.food.id}"><i class="fa fa-angle-double-down"></i>
 									<img src="items/image/${bestseller.food.id}" alt="Slide 1" height="148" width="170">
 								</a>
+								<label>${bestseller.food.name}</label>
 							</div>
 							</c:forEach>																		
 						</div>

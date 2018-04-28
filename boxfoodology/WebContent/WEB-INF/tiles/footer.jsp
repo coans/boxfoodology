@@ -37,8 +37,7 @@
 			<li><a href="policies/terms">Terms</a></li>
 			<li>|</li>
 			<li><a href="policies/privacy">Privacy Policy</a></li><br/>
-<%-- 			<li>Currently v${verison}</li> --%>
-			<p><font size="2">&copy; 2018 BoxFoodology</font></p>
+			<p><font size="2">&copy; 2018 BoxFoodology<br/>All rights reserved.</font></p>
 			<p style="margin-top: -1.5%;"><font size="1">Web site by <a href="mailto:oroz.aleksandar@gmail.com">IT-OROZ</a></font></p>
 		</ul>
 	</div>
