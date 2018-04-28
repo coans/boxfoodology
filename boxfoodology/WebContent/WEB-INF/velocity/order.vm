@@ -9,17 +9,18 @@
 		<table border="2" class="table table-striped" style="width: 100%; background: #f1f0e8; border-spacing: 0px; font-family: Helvetica Neue,Helvetica,Arial,sans-serif; font-size: 14px; line-height: 1.42857;">
 			<thead>
 				<tr>
-					<td colspan="5" style="background-color: #3B5998; color: #FFF; height: 50px; text-align: center;">
+					<td colspan="6" style="background-color: #3B5998; color: #FFF; height: 50px; text-align: center;">
 						BoxFoodology
 					</td>
 				</tr>
-				<tr><td colspan="5">&nbsp;</td></tr>
+				<tr><td colspan="6">&nbsp;</td></tr>
 				<tr>
 					<th class="text-center">#</th>
 					<th class="text-center">Food</th>
 					<th class="text-center">Category</th>
 					<th class="text-center">Price</th>
 					<th class="text-center">Quantity</th>
+					<th class="text-center">Amount</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -28,12 +29,14 @@
 						<td width="10%" align="center">$foreach.count</td>
 						<td width="30%" align="center"><b>$order.food.name</b></td>
 						<td width="30%" align="center">$order.food.category.title</td>
-						<td width="15%" align="center">$order.food.price</td>
-						<td width="12%" align="center"><b>$order.quantity</b></td>
+						<td width="10%" align="center">$order.food.price</td>
+						<td width="10%" align="center"><b>$order.quantity</b></td>
+						<td width="10%" align="center"><b>$order.amount</b></td>
 					</tr>
 				#end
-				<tr><td colspan="5">&nbsp;</td></tr>
+				<tr><td colspan="6">&nbsp;</td></tr>
 				<tr>
+					<td>&nbsp;</td>
 					<td>&nbsp;</td>
 					<td>&nbsp;</td>
 					<td>&nbsp;</td>

@@ -1,6 +1,7 @@
 package com.boxfoodology.db.entity;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -61,5 +62,9 @@ public class Myorder implements Serializable {
 
 	public void setQuantity(Integer quantity) {
 		this.quantity = quantity;
+	}
+	
+	public BigDecimal getAmount() {
+		return this.food.getPrice().multiply(BigDecimal.valueOf(quantity));
 	}
 }

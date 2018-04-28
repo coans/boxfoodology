@@ -36,6 +36,7 @@
 							<th class="text-center">Category</th>
 							<th class="text-center">Price</th>
 							<th class="text-center">Quantity</th>
+							<th class="text-center">Amount</th>
 							<th class="text-center">Action</th>
 						</tr>
 					</thead>
@@ -44,11 +45,12 @@
 							<tr>
 								<td width="10%" align="center">${loop.count}</td>
 								<td align="center"><img class="thumbnail img-responsive" src="items/image/${order.food.id}" style="margin-bottom: 2px;"></td>
-								<td width="30%" align="center">${order.food.name}</td>
+								<td width="25%" align="center">${order.food.name}</td>
 								<td width="20%" align="center">${order.food.category.title}</td>
 								<td width="10%" align="center">${order.food.price}</td>
 								<td width="10%" align="center">${order.quantity}</td>
-								<td width="20%" align="center">
+								<td width="10%" align="center">${order.amount}</td>
+								<td width="15%" align="center">
 									<c:if test="${not confirmed}">
 										<a href="my/orders/add/${order.food.id}/1" title="Add one more item"><i class="glyphicon glyphicon-plus"></i></a>
 										&nbsp;
@@ -57,7 +59,7 @@
 								</td>
 							</tr>
 						</c:forEach>
-						<tr><td colspan="7">&nbsp;</td></tr>
+						<tr><td colspan="8">&nbsp;</td></tr>
 						<tr>
 							<td class="active">&nbsp;</td>
 							<td class="active">&nbsp;</td>
@@ -65,9 +67,16 @@
 							<td class="active">&nbsp;</td>
 							<td class="active">&nbsp;</td>
 							<td class="active" align="center">In total:</td>
-							<td class="success">${priceOfOrderedItems} AED</td>						
+							<td class="success">${priceOfOrderedItems} AED</td>	
+							<c:if test="${not confirmed}">
+								<td class="active" align="right" style="padding-right: 0px;"><a href="my/orders/confirm" class="btn btn-primary btn-small">Confirm order</a></td>						
+							</c:if>
+							<c:if test="${confirmed}">
+								<td class="active">&nbsp;</td>						
+							</c:if>					
 						</tr>
-						<tr>
+						<%-- <tr>
+							<td>&nbsp;</td>
 							<td>&nbsp;</td>
 							<td>&nbsp;</td>						
 							<td>&nbsp;</td>
@@ -80,7 +89,7 @@
 							<c:if test="${confirmed}">
 								<td>&nbsp;</td>						
 							</c:if>
-						</tr>
+						</tr> --%>
 					</tbody>
 			    </table>
 			</div>
