@@ -69,33 +69,20 @@
 							<td class="active" align="center">In total:</td>
 							<td class="success">${priceOfOrderedItems} AED</td>	
 							<c:if test="${not confirmed}">
-								<td class="active" align="right" style="padding-right: 0px;"><a href="my/orders/confirm" class="btn btn-primary btn-small">Confirm order</a></td>						
+								<td class="active" align="right" style="padding-right: 0px;">
+								<a href="#" data-href="my/orders/confirm" class="btn btn-primary btn-small" data-toggle="modal" data-target="#confirmOrderId" title="Confirm order">Confirm order</a></td>						
 							</c:if>
 							<c:if test="${confirmed}">
 								<td class="active">&nbsp;</td>						
 							</c:if>					
 						</tr>
-						<%-- <tr>
-							<td>&nbsp;</td>
-							<td>&nbsp;</td>
-							<td>&nbsp;</td>						
-							<td>&nbsp;</td>
-							<td>&nbsp;</td>
-							<td>&nbsp;</td>
-							<td>&nbsp;</td>
-							<c:if test="${not confirmed}">
-								<td align="right" style="padding-right: 0px;"><a href="my/orders/confirm" class="btn btn-primary btn-small">Confirm order</a></td>						
-							</c:if>
-							<c:if test="${confirmed}">
-								<td>&nbsp;</td>						
-							</c:if>
-						</tr> --%>
 					</tbody>
 			    </table>
 			</div>
 		</section>
 	</div>
 </div>
+<!-- Confirm delete modal -->
 <div class="modal fade" id="confirmDeleteId" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -104,6 +91,19 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                 <a class="btn btn-danger btn-ok">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Confirm order modal -->
+<div class="modal fade" id="confirmOrderId" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" align="center"><b>Confirm Order</b></div>
+            <div class="modal-body" align="center">Are you sure you want to confirm order?</div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <a class="btn btn-success btn-ok">Confirm</a>
             </div>
         </div>
     </div>
@@ -130,6 +130,9 @@
 	});
 	
 	$('#confirmDeleteId').on('show.bs.modal', function(e) {
+	    $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
+	});
+	$('#confirmOrderId').on('show.bs.modal', function(e) {
 	    $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
 	});
 </script>
