@@ -65,7 +65,7 @@
 								<c:if test="${loop.index != 0}">
 									<div class="col-xs-2">
 								</c:if>
-								<a href="items/details/${bestseller.food.id}"><i class="fa fa-angle-double-down"></i>
+								<a href="items/details/${bestseller.food.id}" title="View details"><i class="fa fa-angle-double-down"></i>
 									<img src="items/image/${bestseller.food.id}" alt="Slide 1" height="148" width="170">
 								</a>
 								<label>${bestseller.food.name}</label>
@@ -84,7 +84,7 @@
 								<c:if test="${loop.index != 0}">
 									<div class="col-xs-2">
 								</c:if>
-								<a href="items/details/${bestseller.food.id}"><i class="fa fa-angle-double-down"></i>
+								<a href="items/details/${bestseller.food.id}" title="View details"><i class="fa fa-angle-double-down"></i>
 									<img src="items/image/${bestseller.food.id}" alt="Slide 1" height="148" width="170">
 								</a>
 								<label>${bestseller.food.name}</label>
@@ -103,7 +103,7 @@
 								<c:if test="${loop.index != 0}">
 									<div class="col-xs-2">
 								</c:if>
-								<a href="items/details/${bestseller.food.id}"><i class="fa fa-angle-double-down"></i>
+								<a href="items/details/${bestseller.food.id}" title="View details"><i class="fa fa-angle-double-down"></i>
 									<img src="items/image/${bestseller.food.id}" alt="Slide 1" height="148" width="170">
 								</a>
 								<label>${bestseller.food.name}</label>
