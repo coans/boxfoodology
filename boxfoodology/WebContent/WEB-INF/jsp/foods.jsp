@@ -4,9 +4,16 @@
 
 <div class="container">
 	<p><a href="foods/new" class="btn btn-info"><spring:message code="food.header"/></a></p>
+	<label>Filter by category</label>
+	<select id="category" onchange="filterFoodByCategory()">
+	    <c:forEach items="${categories}" var="category">
+            <option value="${category.id}" ${category.id == selectedCategoryId ? 'selected' : ''}>${category.title}</option>
+	    </c:forEach>
+	</select>
 	<table class="table table-striped">
 		<thead>
 			<tr>
+				<th class="text-center" scope="col">#</th>
 				<th class="text-center" scope="col">Name</th>
 				<th class="text-center" scope="col">Price</th>
 				<th class="text-center" scope="col">Category</th>
@@ -15,8 +22,9 @@
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach items="${foods}" var="food">	
+			<c:forEach items="${foods}" var="food" varStatus="loop">	
 				<tr>
+					<td align="center">${loop.count}</td>
 					<td align="center">${food.name}</td>
 					<td align="center">${food.price}</td>
 					<td align="center">${food.category.title}</td>
@@ -47,4 +55,9 @@
 	$('#confirmDeleteId').on('show.bs.modal', function(e) {
 	    $(this).find('.btn-ok').attr('href', $(e.relatedTarget).data('href'));
 	});
+	
+	function filterFoodByCategory() {
+		var baseUrl = "${baseurl}";
+		location.href = baseUrl + "foods?categoryId=" + $("#category").val();
+	}
 </script>

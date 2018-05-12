@@ -3,6 +3,7 @@ package com.boxfoodology.controller;
 import java.beans.PropertyEditorSupport;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.boxfoodology.config.BaseController;
@@ -47,8 +49,16 @@ public class FoodController extends BaseController {
 	private FoodValidator validator;
 	
 	@RequestMapping(method = RequestMethod.GET)
-	public String defaultView(ModelMap model, HttpServletRequest request, HttpSession session, Locale locale) {
-		model.addAttribute("foods", foodRepository.findAll());
+	public String defaultView(ModelMap model, HttpServletRequest request, HttpSession session, Locale locale, @RequestParam(required = false) Integer categoryId) {
+		if (categoryId != null && categoryId != 0) {
+			model.addAttribute("foods", foodRepository.findFoodByCategory(categoryId));
+			model.addAttribute("selectedCategoryId", categoryId);
+		} else {
+			model.addAttribute("foods", foodRepository.findAll());
+		}
+		List<Category> categories = categoryRepository.findAll();
+		categories.add(0, new Category("Select category..."));
+		model.addAttribute("categories", categories);
 		
 		return VIEW_DEFAULT;
 	}
