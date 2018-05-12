@@ -42,6 +42,7 @@ public class BaseController {
 	private static final String VERISON = "verison";
 	private static final String SHOPPING_CART = "shopping_cart_";
 	private static final String QUANTITY = "quantity";
+	private static final String CAREERS_POSITIONS = "careers_positions";
 	
 	@Value("${base.url}")
 	protected String baseUrl;
@@ -82,6 +83,11 @@ public class BaseController {
 	@ModelAttribute(QUANTITY)
 	public List<Integer> getQuantity() {
 		return Arrays.asList(1,2,3,4,5,6,7,8,9,10);
+	}
+	
+	@ModelAttribute(CAREERS_POSITIONS)
+	public List<String> getCareersPositions() {
+		return Arrays.asList("Cook", "Chef", "Manager", "Other");
 	}
 	
 	@SuppressWarnings("unchecked")

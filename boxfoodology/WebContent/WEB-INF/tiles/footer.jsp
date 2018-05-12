@@ -8,7 +8,7 @@
 			<ul>
 				<li><h4><i>ABOUT</i></h4></li>
 				<li><a href="our-story">Our story</a></li><br/>
-				<li><a href="location/empty">Careers</a></li><br/>
+				<li><a href="careers/new">Careers</a></li><br/>
 			</ul>
 		</div>
 		<div class="col-xs-2" align="left">

@@ -112,7 +112,20 @@ CREATE TABLE `boxfoodology`.`bestseller` (
     REFERENCES `boxfoodology`.`food` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
-   
+
+CREATE TABLE `boxfoodology`.`careers` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `firstName` VARCHAR(45) NOT NULL,
+  `lastName` VARCHAR(45) NOT NULL,
+  `email` VARCHAR(45) NOT NULL,
+  `phone` VARCHAR(45) NOT NULL,
+  `position` VARCHAR(45) NOT NULL,
+  `created` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `cv` MEDIUMBLOB NOT NULL,
+  `contentType` VARCHAR(45) NULL,
+  `cvFileName` VARCHAR(50) NULL,
+  PRIMARY KEY (`id`));
+
     
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
