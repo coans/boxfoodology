@@ -17,7 +17,6 @@
 						<li><a href="items/6"><spring:message code="submenu.mains.beef"/></a></li>
 						<li><a href="items/7"><spring:message code="submenu.mains.lamb"/></a></li>
 						<li><a href="items/8"><spring:message code="submenu.mains.fish"/></a></li>
-						<li><a href="items/5"><spring:message code="submenu.mains.vegetarian"/></a></li>
 						<li><a href="items/9"><spring:message code="submenu.mains.meals.for.one"/></a></li>
 						<li><a href="items/3"><spring:message code="submenu.mains.meals.for.two"/></a></li>
 						<li><a href="items/10"><spring:message code="submenu.mains.family.meals"/></a></li>
@@ -82,10 +81,8 @@
 					<a class="dropdown-toggle"	data-toggle="dropdown" href="#mains"><spring:message code="menu.about.us"/><span class="caret"></span></a>
 					<ul class="dropdown-menu">
 						<li><a href="our-story"><spring:message code="submenu.about.our.story"/></a></li>
-<%-- 						<li><a href="location/empty"><spring:message code="submenu.about.our.values"/></a></li>
-						<li><a href="location/empty"><spring:message code="submenu.about.our.kitchen"/></a></li> --%>
 						<li><a href="meet-the-chef"><spring:message code="submenu.about.meet.chef"/></a></li>
-						<li><a href="location/empty"><spring:message code="submenu.about.careers"/></a></li>
+						<li><a href="careers/new"><spring:message code="submenu.about.careers"/></a></li>
 						<li><a href="messages/new"><spring:message code="submenu.about.contact"/></a></li>
 						<li><a href="location"><spring:message code="submenu.about.find.us"/></a></li>
 					</ul>	
@@ -97,6 +94,7 @@
 							<li><a href="foods"><spring:message code="food.menu"/></a></li>
 							<li><a href="messages">Messages</a></li>
 							<li><a href="bestsellers">Bestsellers</a></li>
+							<li><a href="careers"><spring:message code="submenu.about.careers"/></a></li>
 						</ul>
 					</li>
 				</sec:authorize>
