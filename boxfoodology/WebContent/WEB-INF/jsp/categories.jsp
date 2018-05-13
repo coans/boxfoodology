@@ -3,36 +3,34 @@
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <div class="container">
-	<p><a href="foods/new" class="btn btn-info"><spring:message code="food.header"/></a></p>
-	<label>Filter by category</label>
+	<p><a href="categories/new" class="btn btn-info"><spring:message code="category.header"/></a></p>
+<%-- 	<label>Filter by category</label>
 	<select id="category" onchange="filterFoodByCategory()">
 	    <c:forEach items="${categories}" var="category">
             <option value="${category.id}" ${category.id == selectedCategoryId ? 'selected' : ''}>${category.name}</option>
 	    </c:forEach>
-	</select>
+	</select> --%>
 	<table class="table table-striped">
 		<thead>
 			<tr>
 				<th class="text-center" scope="col">#</th>
 				<th class="text-center" scope="col">Name</th>
-				<th class="text-center" scope="col">Price</th>
-				<th class="text-center" scope="col">Category</th>
-				<th class="text-center" scope="col">Description</th>
+				<th class="text-center" scope="col">Menu</th>
+				<th class="text-center" scope="col">Date</th>
 				<th class="text-center" xscope="col">Action</th>
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach items="${foods}" var="food" varStatus="loop">	
+			<c:forEach items="${categories}" var="category" varStatus="loop">	
 				<tr>
 					<td align="center">${loop.count}</td>
-					<td align="center">${food.name}</td>
-					<td align="center">${food.price}</td>
-					<td align="center">${food.category.name}</td>
-					<td align="center">${food.description}</td>
+					<td align="center">${category.name}</td>
+					<td align="center">${category.menu}</td>
+					<td align="center">${category.created}</td>
 					<td align="center">
-						<a href="foods/edit/${food.id}" title="Edit"><i class="glyphicon glyphicon-pencil"></i></a>
+						<a href="categories/edit/${category.id}" title="Edit"><i class="glyphicon glyphicon-pencil"></i></a>
 						&nbsp;
-						<a href="#" data-href="foods/delete/${food.id}" data-toggle="modal" data-target="#confirmDeleteId" title="Delete"><i class="glyphicon glyphicon-remove"></i></a>
+						<a href="#" data-href="categories/delete/${category.id}" data-toggle="modal" data-target="#confirmDeleteId" title="Delete"><i class="glyphicon glyphicon-remove"></i></a>
 					</td>
 				</tr>
 			</c:forEach>
@@ -58,6 +56,6 @@
 	
 	function filterFoodByCategory() {
 		var baseUrl = "${baseurl}";
-		location.href = baseUrl + "foods?categoryId=" + $("#category").val();
+		location.href = baseUrl + "categories";//?categoryId=" + $("#category").val();
 	}
 </script>

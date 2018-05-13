@@ -2,6 +2,7 @@ package com.boxfoodology.db.entity;
 
 import java.io.Serializable;
 import java.sql.Blob;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -11,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
+import org.hibernate.annotations.Where;
+
 
 
 /**
@@ -19,16 +22,18 @@ import javax.persistence.OneToMany;
  */
 @Entity
 @NamedQuery(name="Category.findAll", query="SELECT c FROM Category c")
+@Where(clause  = "deleted = 0")
 public class Category implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
-
-	private String title;
-
+	private String name;
 	private Blob image;
+	private Date created;
+	private boolean deleted;
+	private String menu;
 
 	@OneToMany(mappedBy="category")
 	private List<Food> foods;
@@ -36,8 +41,8 @@ public class Category implements Serializable {
 	public Category() {
 	}
 	
-	public Category(final String title) {
-		this.title = title;
+	public Category(final String name) {
+		this.name = name;
 	}
 	
 	public int getId() {
@@ -48,12 +53,12 @@ public class Category implements Serializable {
 		this.id = id;
 	}
 
-	public String getTitle() {
-		return this.title;
+	public String getName() {
+		return name;
 	}
 
-	public void setTitle(String title) {
-		this.title = title;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public Blob getImage() {
@@ -70,5 +75,29 @@ public class Category implements Serializable {
 
 	public void setFoods(List<Food> foods) {
 		this.foods = foods;
+	}
+
+	public Date getCreated() {
+		return created;
+	}
+
+	public void setCreated(Date created) {
+		this.created = created;
+	}
+
+	public boolean isDeleted() {
+		return deleted;
+	}
+
+	public void setDeleted(boolean deleted) {
+		this.deleted = deleted;
+	}
+
+	public String getMenu() {
+		return menu;
+	}
+
+	public void setMenu(String menu) {
+		this.menu = menu;
 	}
 }

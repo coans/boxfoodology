@@ -38,7 +38,7 @@ public class ItemController extends BaseController {
 	public String itemsView(@PathVariable(value = "categoryId") Integer categoryId, ModelMap model) {
 		//for correct jsp display, set 4 items per row
 		List<Food> result = foodRepository.findFoodByCategory(categoryId);
-		String title = categoryRepository.findOne(categoryId).getTitle();
+		String title = categoryRepository.findOne(categoryId).getName();
 		prepareListOfFoodForJsp(model, result, title);
 		
 		return VIEW_ITEMS;

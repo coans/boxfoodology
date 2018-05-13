@@ -43,6 +43,7 @@ public class BaseController {
 	private static final String SHOPPING_CART = "shopping_cart_";
 	private static final String QUANTITY = "quantity";
 	private static final String CAREERS_POSITIONS = "careers_positions";
+	private static final String MAIN_MENU = "main_menu";
 	
 	@Value("${base.url}")
 	protected String baseUrl;
@@ -88,6 +89,11 @@ public class BaseController {
 	@ModelAttribute(CAREERS_POSITIONS)
 	public List<String> getCareersPositions() {
 		return Arrays.asList("Cook", "Chef", "Manager", "Other");
+	}
+
+	@ModelAttribute(MAIN_MENU)
+	public List<String> getMainMenu() {
+		return Arrays.asList("Mains", "Ranges", "Special diets", "Special events");
 	}
 	
 	@SuppressWarnings("unchecked")

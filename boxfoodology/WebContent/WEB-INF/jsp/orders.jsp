@@ -46,7 +46,7 @@
 								<td width="10%" align="center">${loop.count}</td>
 								<td align="center"><img class="thumbnail img-responsive" src="items/image/${order.food.id}" style="margin-bottom: 2px;"></td>
 								<td width="25%" align="center">${order.food.name}</td>
-								<td width="20%" align="center">${order.food.category.title}</td>
+								<td width="20%" align="center">${order.food.category.name}</td>
 								<td width="10%" align="center">${order.food.price}</td>
 								<td width="10%" align="center">${order.quantity}</td>
 								<td width="10%" align="center">${order.amount}</td>

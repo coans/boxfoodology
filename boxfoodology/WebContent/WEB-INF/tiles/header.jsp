@@ -91,6 +91,7 @@
 					<li>
 						<a class="dropdown-toggle"	data-toggle="dropdown" href="#mains"><spring:message code="menu.admin"/><span class="caret"></span></a>
 						<ul class="dropdown-menu">
+							<li><a href="categories"><spring:message code="category.menu.name"/></a></li>
 							<li><a href="foods"><spring:message code="food.menu"/></a></li>
 							<li><a href="messages">Messages</a></li>
 							<li><a href="bestsellers">Bestsellers</a></li>

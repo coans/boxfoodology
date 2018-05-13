@@ -28,7 +28,7 @@
 					<tr>
 						<td width="10%" align="center">$foreach.count</td>
 						<td width="30%" align="center"><b>$order.food.name</b></td>
-						<td width="30%" align="center">$order.food.category.title</td>
+						<td width="30%" align="center">$order.food.category.name</td>
 						<td width="10%" align="center">$order.food.price</td>
 						<td width="10%" align="center"><b>$order.quantity</b></td>
 						<td width="10%" align="center"><b>$order.amount</b></td>

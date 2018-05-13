@@ -24,7 +24,7 @@
 				</div>
 				<div class="form-group">
 					<form:label path="category.id" class="required"><spring:message code="food.category"/></form:label>
-					<form:select path="category.id" class="form-control"  items="${categories}" itemLabel="title" itemValue="id"/>
+					<form:select path="category.id" class="form-control"  items="${categories}" itemLabel="name" itemValue="id"/>
 					<div class="has-error">
 						<form:errors path="category.id" cssClass="help-block" element="label"/>
 					</div>
