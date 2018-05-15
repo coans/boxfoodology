@@ -18,7 +18,7 @@
 				<th class="text-center" scope="col">Price</th>
 				<th class="text-center" scope="col">Category</th>
 				<th class="text-center" scope="col">Description</th>
-				<th class="text-center" xscope="col">Action</th>
+				<th class="text-center" scope="col">Action</th>
 			</tr>
 		</thead>
 		<tbody>

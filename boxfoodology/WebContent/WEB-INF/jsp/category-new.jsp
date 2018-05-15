@@ -21,9 +21,16 @@
 					<div class="has-error">
 						<form:errors path="menu" cssClass="help-block" element="label"/>
 					</div>
-				</div>					
+				</div>	
 				<div class="form-group">
-					<form:label path="imageFile" class="required"><spring:message code="category.image"/></form:label>
+					<form:label path="showOnHome" style="padding-right: 20px;"><spring:message code="category.show.on.home" /></form:label>
+					<form:checkbox path="showOnHome"/>
+					<div class="has-error">
+						<form:errors path="showOnHome" cssClass="help-block" element="label"/>
+					</div>
+				</div>								
+				<div class="form-group">
+					<form:label path="imageFile"><spring:message code="category.image"/></form:label>
 					<form:input type="file" path="imageFile"/>
 					<div class="has-error">
 						<form:errors path="imageFile" cssClass="help-block" element="label"/>
@@ -31,7 +38,7 @@
 				</div>
 				<p>&nbsp;</p>					
 				<button type="submit" class="btn btn btn-primary"><spring:message code="button.save"/></button>
-				<a class="btn btn-success" href="foods"><spring:message code="button.cancel"/></a>
+				<a class="btn btn-success" href="categories"><spring:message code="button.cancel"/></a>
 			</form:form>
 		</div>
 	</div>

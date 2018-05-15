@@ -19,7 +19,7 @@
 						<h5><b>Telephone: </b>+0123456789</h5>
 					</p>
 					<p>
-						<h5><b>Email: </b>contact@boxfoogology.com</h5>
+						<h5><b>Email: </b>contact@boxfoodology.com</h5>
 					</p><br/>			
 					<p>
 						<form:form modelAttribute="message" method="POST" action="${action}">

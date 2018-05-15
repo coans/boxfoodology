@@ -34,6 +34,7 @@ public class Category implements Serializable {
 	private Date created;
 	private boolean deleted;
 	private String menu;
+	private boolean showOnHome;
 
 	@OneToMany(mappedBy="category")
 	private List<Food> foods;
@@ -99,5 +100,13 @@ public class Category implements Serializable {
 
 	public void setMenu(String menu) {
 		this.menu = menu;
+	}
+
+	public boolean isShowOnHome() {
+		return showOnHome;
+	}
+
+	public void setShowOnHome(boolean showOnHome) {
+		this.showOnHome = showOnHome;
 	}
 }

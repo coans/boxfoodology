@@ -27,6 +27,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.boxfoodology.config.BaseController;
 import com.boxfoodology.db.entity.Category;
 import com.boxfoodology.db.entity.Food;
+import com.boxfoodology.db.repository.BestsellerRepository;
 import com.boxfoodology.db.repository.CategoryRepository;
 import com.boxfoodology.db.repository.FoodRepository;
 import com.boxfoodology.model.FoodBean;
@@ -45,6 +46,8 @@ public class FoodController extends BaseController {
 	private FoodRepository foodRepository;
 	@Autowired
 	private CategoryRepository categoryRepository;
+	@Autowired
+	private BestsellerRepository bestsellerRepository;
 	@Autowired
 	private FoodValidator validator;
 	
@@ -114,25 +117,6 @@ public class FoodController extends BaseController {
 		foodBean.setId(food.getId());
 		foodBean.setName(food.getName());
 		foodBean.setPrice(food.getPrice());
-		/*
-		 Blob blob = food.getImage();
-		    byte [] array = blob.getBytes( 1, ( int ) blob.length() );
-		    File file = File.createTempFile("something-", ".binary", new File("."));
-		    FileOutputStream out = new FileOutputStream( file );
-		    out.write( array );
-		    out.close();
-		    FileItem fileItem = new DiskFileItem("mainFile", Files.probeContentType(file.toPath()), false, file.getName(), (int) file.length(), file.getParentFile());
-
-		    try {
-		        InputStream input = new FileInputStream(file);
-		        OutputStream os = fileItem.getOutputStream();
-		        IOUtils.copy(input, os);
-		    } catch (IOException ex) {
-		        // do something.
-		    }
-
-		    MultipartFile multipartFile = new CommonsMultipartFile(fileItem);
-		foodBean.setImageFile(multipartFile);*/
 		
 		model.addAttribute("foodmodel", foodBean);
 		model.addAttribute("action", CONTROLLER + "/update");
@@ -151,7 +135,14 @@ public class FoodController extends BaseController {
 		food.setDescription(foodBean.getDescription());
 		food.setName(foodBean.getName());
 		food.setPrice(foodBean.getPrice());
-		//TODO fix picture
+		try {
+			if (foodBean.getImageFile().getBytes().length != 0) {
+				food.setImage(BlobProxy.generateProxy(foodBean.getImageFile().getBytes()));
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		validator.validate(food, errors);
 		
@@ -170,6 +161,9 @@ public class FoodController extends BaseController {
 	
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
 	public String delete(@PathVariable(value = "id") Integer foodId) {
+		//first delete bestseller
+		bestsellerRepository.deleteBestsellerByFood(foodId);
+		//delete food
 		Food food = foodRepository.findOne(foodId);
 		food.setDeleted(true);
 		foodRepository.save(food);

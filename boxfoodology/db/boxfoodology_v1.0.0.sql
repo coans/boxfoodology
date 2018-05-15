@@ -49,6 +49,7 @@ CREATE TABLE IF NOT EXISTS `boxfoodology`.`category` (
   `created` DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
   `menu` VARCHAR(45) NOT NULL,
   `deleted` TINYINT(1) NULL DEFAULT 0,
+  `showOnHome` TINYINT(1) NULL DEFAULT 0,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
@@ -107,6 +108,7 @@ CREATE TABLE `boxfoodology`.`message` (
 CREATE TABLE `boxfoodology`.`bestseller` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `food_id` INT NOT NULL,
+  `deleted` TINYINT(1) NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   INDEX `fk_food_bestseller_idx` (`food_id` ASC),
   CONSTRAINT `fk_food_bestseller`

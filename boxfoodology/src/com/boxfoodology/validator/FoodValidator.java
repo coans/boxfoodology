@@ -60,7 +60,7 @@ public class FoodValidator implements Validator {
 			} else {
 				BufferedImage image = ImageIO.read(food.getImage().getBinaryStream());
 				if (image.getHeight() > 395 || image.getWidth() > 455) {
-					errors.rejectValue("imageFile", "error.foog.image.dimension");
+					errors.rejectValue("imageFile", "error.food.image.dimension");
 				}
 			}
 		} catch (SQLException e) {
