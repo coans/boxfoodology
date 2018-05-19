@@ -17,6 +17,7 @@ import java.util.List;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
@@ -25,9 +26,11 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
 import com.boxfoodology.auth.AuthorizationService;
+import com.boxfoodology.db.entity.Category;
 import com.boxfoodology.db.entity.Food;
 import com.boxfoodology.db.entity.Myorder;
 import com.boxfoodology.db.entity.User;
+import com.boxfoodology.db.repository.CategoryRepository;
 
 @Controller("/" + BaseController.CONTROLLER)
 public class BaseController {
@@ -44,6 +47,15 @@ public class BaseController {
 	private static final String QUANTITY = "quantity";
 	private static final String CAREERS_POSITIONS = "careers_positions";
 	private static final String MAIN_MENU = "main_menu";
+	private static final String MENU_MAINS = "menu_mains";
+	private static final String MENU_RANGES = "menu_ranges";
+	private static final String MENU_SPECIAL_DIETS = "menu_special_diets";
+	private static final String MENU_SPECIAL_EVENTS = "menu_special_events";
+	private static final String SPECIAL_EVENTS = "Special events";
+	private static final String SPECIAL_DIETS = "Special diets";
+	private static final String RANGES = "Ranges";
+	private static final String MAINS = "Mains";
+	
 	
 	@Value("${base.url}")
 	protected String baseUrl;
@@ -53,6 +65,9 @@ public class BaseController {
 	
 	@Value("${mail.address}")
 	protected String kitchenMail;
+	
+	@Autowired
+	private CategoryRepository categoryRepository;
 	
 	@InitBinder
 	protected void initBinder(WebDataBinder binder) {
@@ -93,7 +108,27 @@ public class BaseController {
 
 	@ModelAttribute(MAIN_MENU)
 	public List<String> getMainMenu() {
-		return Arrays.asList("Mains", "Ranges", "Special diets", "Special events");
+		return Arrays.asList(MAINS, RANGES, SPECIAL_DIETS, SPECIAL_EVENTS);
+	}
+	
+	@ModelAttribute(MENU_MAINS)
+	public List<Category> getMenuMains() {
+		return categoryRepository.findCategoryByMenu(MAINS);
+	}
+
+	@ModelAttribute(MENU_RANGES)
+	public List<Category> getMenuRanges() {
+		return categoryRepository.findCategoryByMenu(RANGES);
+	}
+	
+	@ModelAttribute(MENU_SPECIAL_DIETS)
+	public List<Category> getMenuSpecialDiets() {
+		return categoryRepository.findCategoryByMenu(SPECIAL_DIETS);
+	}
+
+	@ModelAttribute(MENU_SPECIAL_EVENTS)
+	public List<Category> getMenuSpecialEvents() {
+		return categoryRepository.findCategoryByMenu(SPECIAL_EVENTS);
 	}
 	
 	@SuppressWarnings("unchecked")

@@ -4,7 +4,7 @@
 
 <div id="home">
 	<div class="section-container">
-	<jsp:include page="home-picture.jsp"/>
+		<jsp:include page="home-picture.jsp"/>
 		
 		<section id="about" class="section-blue">
 			<div class="moving-text">
@@ -12,29 +12,21 @@
 			</div>		
 			<div class="container text-center" style="padding-top: 0px;">
 				<table style="width:100%" align="center">
-				<tr>
-					<td style="padding-right: 20px;"><a href="items/1" class="thumbnail">
-							<img src="images/cat1.jpg" title="Select Italian cuisine"/>
-						</a>
-					</td>
-					<td style="padding-right: 20px;"><a href="items/2" class="thumbnail">
-							<img src="images/cat2.jpg" title="Select Indian cuisine"/>
-						</a></td>
-					<td><a href="items/3" class="thumbnail">
-							<img src="images/cat3.jpg" title="Select meals for two"/>
-						</a></td>									
-				</tr>
-				<tr>
-					<td style="padding-top: 20px; padding-right: 20px;"><a href="items/4" class="thumbnail">
-							<img src="images/cat6.jpg" title="Ramadan food" />
-						</a></td>
-					<td style="padding-top: 20px; padding-right: 20px;"><a href="items/5" class="thumbnail">
-							<img src="images/cat8.jpg" title="Select vegetarian"/>
-						</a></td>
-					<td style="padding-top: 20px;"><a href="items/8" class="thumbnail">
-							<img src="images/cat4.jpg" title="Select fish"/>
-						</a></td>						
-				</tr>
+					<tr>
+						<c:forEach items="${categories}" var="category" varStatus="loop">
+							<c:if test="${loop.count % 3 eq 0}">
+								<td style="padding-right: 20px;">
+									<a href="items/${category.id}" class="thumbnail"><img src="image/${category.id}" title="Select ${category.name}"/></a>
+								</td>
+								</tr><tr>
+							</c:if>
+							<c:if test="${not (loop.count % 3 eq 0)}">
+								<td style="padding-right: 20px;">
+									<a href="items/${category.id}" class="thumbnail"><img src="image/${category.id}" title="Select ${category.name}"/></a>
+								</td>					
+							</c:if>
+						</c:forEach>
+					</tr>
 				</table>
 			</div>
 		</section>
@@ -147,5 +139,4 @@
             scrollTop: $("#info").offset().top
         }, 750, function() { $(".btn-down").remove(); });
 	});
-
 </script>

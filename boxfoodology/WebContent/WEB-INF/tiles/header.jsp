@@ -13,30 +13,20 @@
 				<li class="dropdown">
 					<a class="dropdown-toggle"	data-toggle="dropdown" href="#mains"><spring:message code="menu.mains"/><span class="caret"></span></a>
 					<ul class="dropdown-menu">
-						<li><a href="items/12"><spring:message code="submenu.mains.chicken"/></a></li>
-						<li><a href="items/6"><spring:message code="submenu.mains.beef"/></a></li>
-						<li><a href="items/7"><spring:message code="submenu.mains.lamb"/></a></li>
-						<li><a href="items/8"><spring:message code="submenu.mains.fish"/></a></li>
-						<li><a href="items/9"><spring:message code="submenu.mains.meals.for.one"/></a></li>
-						<li><a href="items/3"><spring:message code="submenu.mains.meals.for.two"/></a></li>
-						<li><a href="items/10"><spring:message code="submenu.mains.family.meals"/></a></li>
+						<c:forEach items="${menu_mains}" var="main">
+							<li><a href="items/${main.id}">${main.name}</a></li>
+						</c:forEach>
 					</ul>
 				</li>
 				<li>
 					<a class="dropdown-toggle"	data-toggle="dropdown" href="#mains"><spring:message code="menu.ranges"/><span class="caret"></span></a>
 					<ul class="dropdown-menu">
-						<li><a href="items/13"><spring:message code="submenu.ranges.thai"/></a></li>
-						<li><a href="items/1"><spring:message code="submenu.ranges.italian"/></a></li>
-						<li><a href="items/14"><spring:message code="submenu.ranges.maroccan"/></a></li>
-						<li><a href="items/15"><spring:message code="submenu.ranges.french"/></a></li>
-						<li><a href="items/16"><spring:message code="submenu.ranges.british"/></a></li>
-						<li><a href="items/17"><spring:message code="submenu.ranges.korean"/></a></li>
-						<li><a href="items/18"><spring:message code="submenu.ranges.mexican"/></a></li>
-						<li><a href="items/11"><spring:message code="submenu.ranges.chinese"/></a></li>
-						<li><a href="items/19"><spring:message code="submenu.ranges.japanese"/></a></li>
+						<c:forEach items="${menu_ranges}" var="range">
+							<li><a href="items/${range.id}">${range.name}</a></li>
+						</c:forEach>
 					</ul>				
 				</li>
-				<li>
+<%-- 				<li>
 					<a class="dropdown-toggle"	data-toggle="dropdown" href="#mains"><spring:message code="menu.soups"/><span class="caret"></span></a>
 					<ul class="dropdown-menu">
 						<li><a href="items/28"><spring:message code="submenu.soups.carrot"/></a></li>
@@ -59,22 +49,21 @@
 						<li><a href="items/40"><spring:message code="submenu.sides.slow.cooked.creamed.corn"/></a></li>
 						<li><a href="items/41"><spring:message code="submenu.sides.garlic.parmesan.roasted.potatoes"/></a></li>
 					</ul>				
-				</li>
+				</li> --%>
 				<li>
 				<a class="dropdown-toggle"	data-toggle="dropdown" href="#mains"><spring:message code="menu.special.diets"/><span class="caret"></span></a>
 					<ul class="dropdown-menu">
-						<li><a href="items/5"><spring:message code="submenu.special.diets.vegetarian"/></a></li>
-						<li><a href="items/42"><spring:message code="submenu.special.diets.vegan"/></a></li>
+						<c:forEach items="${menu_special_diets}" var="diet">
+							<li><a href="items/${diet.id}">${diet.name}</a></li>
+						</c:forEach>
 					</ul>
 				</li>
 				<li>
 					<a class="dropdown-toggle"	data-toggle="dropdown" href="#mains"><spring:message code="menu.special.events"/><span class="caret"></span></a>
 					<ul class="dropdown-menu">
-						<li><a href="items/4"><spring:message code="submenu.special.events.ramadan"/></a></li>
-						<li><a href="items/43"><spring:message code="submenu.special.events.easter"/></a></li>
-						<li><a href="items/44"><spring:message code="submenu.special.events.christmas"/></a></li>
-						<li><a href="items/45"><spring:message code="submenu.special.events.provate.events"/></a></li>
-						<li><a href="items/46"><spring:message code="submenu.special.events.catering"/></a></li>
+						<c:forEach items="${menu_special_events}" var="event">
+							<li><a href="items/${event.id}">${event.name}</a></li>
+						</c:forEach>
 					</ul>
 				</li>
 				<li>
@@ -104,7 +93,6 @@
 				<li>
 					<form:form class="form-inline" modelAttribute="search" method="POST" action="items/search" style="padding-top: 7px;">
 						<form:input style="width:150px;" path="name" class="form-control mr-sm-2" type="search" placeholder="Search"/>
-						<!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><img style="opacity:0.5;" alt="Search" src="images/search.png"></button> -->
 					</form:form>
 				</li>
 				<li><a href="my/orders"><spring:message code="button.my.orders"/><span class="badge">${numberOfOrderedItems}</span></a></li>
