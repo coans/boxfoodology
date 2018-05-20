@@ -22,8 +22,10 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.boxfoodology.auth.AuthorizationService;
 import com.boxfoodology.db.entity.Category;
@@ -175,5 +177,13 @@ public class BaseController {
 
 	public String getKitchenMail() {
 		return kitchenMail;
+	}
+	
+	@ExceptionHandler(Exception.class)
+	public ModelAndView handleAllException(Exception ex) {
+
+		ModelAndView model = new ModelAndView("error");
+		return model;
+
 	}
 }
