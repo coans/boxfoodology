@@ -18,13 +18,13 @@
 				        <div class="col-md-6">
 				        </div>
 						<div align="right" class="col-sm-2">
-							<label style="padding-right: 3%;">${food.price} AED</label>
+							<label style="padding-right: 3%;">${food.price} <spring:message code="aed"/></label>
 						</div>
 						<div align="right" class="col-sm-2">
 							<form:select path="food.description" class="form-control" id="quantity" items="${quantity}"/>
   						</div>
   						<div align="right" class="col-sm-1">
-  							<a class="btn btn-primary btn-lg" href="javascript:add(${food.id})">Add</a>
+  							<a class="btn btn-primary btn-lg" href="javascript:add(${food.id})"><spring:message code="button.add"/></a>
   						</div>
 					</div>
 					<br/>
@@ -32,7 +32,7 @@
 						<div class="panel panel-default">
 							<div class="panel-heading">
 								<h4 class="panel-title">
-									<a data-toggle="collapse" data-parent="#accordion" href="#collapse1">About <b><i>${food.name}</i></b></a>
+									<a data-toggle="collapse" data-parent="#accordion" href="#collapse1"><spring:message code="menu.about.us"/> <b><i>${food.name}</i></b></a>
 								</h4>
 						    </div>
 						    <div id="collapse1" class="panel-collapse collapse in">

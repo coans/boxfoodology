@@ -67,7 +67,7 @@
 							<td class="active">&nbsp;</td>
 							<td class="active">&nbsp;</td>
 							<td class="active" align="center">In total:</td>
-							<td class="success">${priceOfOrderedItems} AED</td>	
+							<td class="success">${priceOfOrderedItems} <spring:message code="aed"/></td>	
 							<c:if test="${not confirmed}">
 								<td class="active" align="right" style="padding-right: 0px;">
 								<a href="#" data-href="my/orders/confirm" class="btn btn-primary btn-small" data-toggle="modal" data-target="#confirmOrderId" title="Confirm order">Confirm order</a></td>						

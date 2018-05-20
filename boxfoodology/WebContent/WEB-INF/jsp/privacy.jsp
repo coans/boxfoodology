@@ -25,7 +25,7 @@
 			<p>If after you opt-in, you change your mind, you may withdraw
 				your consent for us to contact you, for the continued collection,
 				use or disclosure of your information, at any time, by contacting us
-				at info@theraproject.org</p>
+				at contact@boxfoodology.com</p>
 			<h4>Disclosure</h4>
 			<p>We may disclose your personal information if we are required
 				by law to do so or if you violate our Terms of Service.</p>

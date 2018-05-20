@@ -68,6 +68,7 @@ public class CareersController extends BaseController {
 			careers.setCvFileName(careers.getCvFile().getOriginalFilename());
 		} catch (IOException e) {
 			logger.error("Error uploading cv.");
+			notif.error("Error while uploading CV");
 			e.printStackTrace();
 		}
 		validator.validate(careers, errors);
@@ -80,7 +81,8 @@ public class CareersController extends BaseController {
 		}
 		
 		careersRepository.save(careers);
-		//TODO postaviti notifikaciju
+		notif.success("Your CV is uploaded successfully");
+
 		return "redirect:/" + HomeController.CONTROLLER;
 	}
 	
