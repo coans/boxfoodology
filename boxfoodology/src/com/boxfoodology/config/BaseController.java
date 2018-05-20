@@ -33,6 +33,7 @@ import com.boxfoodology.db.entity.Food;
 import com.boxfoodology.db.entity.Myorder;
 import com.boxfoodology.db.entity.User;
 import com.boxfoodology.db.repository.CategoryRepository;
+import com.boxfoodology.util.Notif;
 
 @Controller("/" + BaseController.CONTROLLER)
 public class BaseController {
@@ -42,6 +43,7 @@ public class BaseController {
 	public static final String MODEL_NUMBER_OF_ORDERED_ITEMS = "numberOfOrderedItems";
 	public static final String MODEL_PRICE_OF_ORDERED_ITEMS = "priceOfOrderedItems";
 	public static final String MODEL_SEARCH = "search";
+	public static final String MODEL_NOTIF = "flash";
 
 	private static final String BASEURL = "baseurl";
 	private static final String VERISON = "verison";
@@ -58,6 +60,8 @@ public class BaseController {
 	private static final String RANGES = "Ranges";
 	private static final String MAINS = "Mains";
 	
+	
+	protected Notif notif;
 	
 	@Value("${base.url}")
 	protected String baseUrl;
@@ -185,5 +189,11 @@ public class BaseController {
 		ModelAndView model = new ModelAndView("error");
 		return model;
 
+	}
+	
+	@ModelAttribute(MODEL_NOTIF)
+	public Notif flash(final HttpServletRequest request) {
+		notif = new Notif(request.getSession());
+		return notif;
 	}
 }

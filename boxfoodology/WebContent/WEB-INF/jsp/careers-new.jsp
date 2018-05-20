@@ -44,14 +44,14 @@
 					</div>
 				</div>					
 				<div class="form-group">
-					<form:label path="cvFile" class="required">CV(as pdf)</form:label>
+					<form:label path="cvFile" class="required">CV (preferably pdf)</form:label>
 					<form:input type="file" path="cvFile"/>
 					<div class="has-error">
 						<form:errors path="cvFile" cssClass="help-block" element="label"/>
 					</div>
 				</div>
 				<p>&nbsp;</p>					
-				<button type="submit" class="btn btn btn-success" onclick="showmessage()"><spring:message code="button.save"/></button>
+				<button type="submit" class="btn btn btn-success"><spring:message code="button.save"/></button>
 				<a class="btn btn-primary" href="#"><spring:message code="button.cancel"/></a>
 			</form:form>
 			<span class="form-group"><label class="required"/><font size="2"><spring:message code="page.required.fields"/></font></span>

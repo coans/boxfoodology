@@ -5,10 +5,10 @@
 <div id="home">
 	<div class="section-container">
 		<jsp:include page="home-picture.jsp"/>
-		
+		<div id="notifications"></div><!-- notif for cv upload -->
 		<section id="about" class="section-blue">
 			<div class="moving-text">
-				<p><i>Welcome to the best place in Dubai where you can order food. <a href="signup">Sign up</a> it's free, or <a href="login"><spring:message code="button.login"/></a></i></p>
+				<p><i><spring:message code="home.welcome"/> <a href="signup"><spring:message code="button.signup"/></a> <spring:message code="home.welcome.1"/> <a href="login"><spring:message code="button.login"/></a></i></p>
 			</div>		
 			<div class="container text-center" style="padding-top: 0px;">
 				<table style="width:100%" align="center">
