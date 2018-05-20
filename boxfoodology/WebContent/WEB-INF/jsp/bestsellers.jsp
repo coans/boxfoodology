@@ -4,7 +4,7 @@
 
 <div class="container">
 	<c:if test="${not full}">
-		<p><a href="bestsellers/new" class="btn btn-info">New food to bestseller</a></p>
+		<p><a href="bestsellers/new" class="btn btn-info">Add food to bestseller</a></p>
 	</c:if>
 	<c:if test="${full}">
 	 	<div class="alert alert-info alert-dismissible" role="alert">

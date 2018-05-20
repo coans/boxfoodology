@@ -51,9 +51,10 @@
 					</div>
 				</div>
 				<p>&nbsp;</p>					
-				<button type="submit" class="btn btn btn-primary" onclick="showmessage()"><spring:message code="button.save"/></button>
-				<a class="btn btn-success" href="#"><spring:message code="button.cancel"/></a>
+				<button type="submit" class="btn btn btn-success" onclick="showmessage()"><spring:message code="button.save"/></button>
+				<a class="btn btn-primary" href="#"><spring:message code="button.cancel"/></a>
 			</form:form>
+			<span class="form-group"><label class="required"/><font size="2"><spring:message code="page.required.fields"/></font></span>
 		</div>
 	</div>
 </div>

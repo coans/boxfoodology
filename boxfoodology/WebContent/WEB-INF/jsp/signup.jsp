@@ -67,8 +67,9 @@
 				<div class="form-group">
 					By clicking Sign Up, you agree to our <a href="policies/terms" target="_blank">Terms</a> and <a href="policies/privacy" target="_blank">Privacy Policy</a>.
 				</div>
-				<button type="submit" class="btn btn-primary"><spring:message code="button.signup"/></button>
+				<button type="submit" class="btn btn-success"><spring:message code="button.signup"/></button>
 			</form:form>
+			<span class="form-group"><label class="required"/><font size="2"><spring:message code="page.required.fields"/></font></span>
 		</div>
 	</div>
 </div>
