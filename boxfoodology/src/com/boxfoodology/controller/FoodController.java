@@ -9,6 +9,7 @@ import java.util.Locale;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
 import org.hibernate.engine.jdbc.BlobProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
@@ -37,6 +38,8 @@ import com.boxfoodology.validator.FoodValidator;
 @Controller
 @RequestMapping(FoodController.CONTROLLER)
 public class FoodController extends BaseController {
+	
+	final static Logger logger = Logger.getLogger(FoodController.class);
 	
 	public static final String CONTROLLER = "foods";
 	public static final String VIEW_DEFAULT = "foods";
@@ -90,7 +93,7 @@ public class FoodController extends BaseController {
 		try {
 			food.setImage(BlobProxy.generateProxy(foodBean.getImageFile().getBytes()));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			logger.error("Error creating food.");
 			e.printStackTrace();
 		}
 		validator.validate(food, errors);
@@ -140,7 +143,7 @@ public class FoodController extends BaseController {
 				food.setImage(BlobProxy.generateProxy(foodBean.getImageFile().getBytes()));
 			}
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			logger.error("Error updating food[" + foodBean.getId() + "]");
 			e.printStackTrace();
 		}
 		

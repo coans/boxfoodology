@@ -50,19 +50,25 @@ public class HomeController extends BaseController {
 		model.addAttribute("bestsellerPageTwo", bestsellerRepository.findAll(new PageRequest(1, 4)).getContent());
 		model.addAttribute("bestsellerPageThree", bestsellerRepository.findAll(new PageRequest(2, 4)).getContent());
 		model.addAttribute("categories", categoryRepository.findCategoryForHomePage());
-		logger.info("Home controller :)");
 		
 		return VIEW_DEFAULT;
 	}
 	
 	@RequestMapping(value = "image/{categoryId}", method = RequestMethod.GET)
-	public void getImage(@PathVariable(value = "categoryId") Integer categoryId, HttpServletResponse response) throws SQLException, IOException {
+	public void getImage(@PathVariable(value = "categoryId") Integer categoryId, HttpServletResponse response) {
 		Category category = categoryRepository.findOne(categoryId);
-		byte[] image = category.getImage().getBytes(1L, (int)category.getImage().length());
-		response.setContentType("image/jpg");
-		ServletOutputStream output = response.getOutputStream();
-		output.write(image);
-		output.close();
-		
+		try {
+			byte[] image = category.getImage().getBytes(1L, (int)category.getImage().length());
+			response.setContentType("image/jpg");
+			ServletOutputStream output = response.getOutputStream();
+			output.write(image);
+			output.close();
+		} catch (SQLException e) {
+			logger.error("Error access category [" + categoryId + "] image");
+			e.printStackTrace();
+		} catch (IOException e) {
+			logger.error("Error access category [" + categoryId + "] image");
+			e.printStackTrace();			
+		}
 	}
 }

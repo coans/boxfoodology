@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.io.IOUtils;
+import org.apache.log4j.Logger;
 import org.hibernate.engine.jdbc.BlobProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,6 +29,8 @@ import com.boxfoodology.validator.CareersValidator;
 @Controller
 @RequestMapping(CareersController.CONTROLLER)
 public class CareersController extends BaseController {
+	
+	final static Logger logger = Logger.getLogger(CareersController.class);
 	
 	public static final String CONTROLLER = "careers";
 	public static final String VIEW_DEFAULT = "careers";
@@ -64,7 +67,7 @@ public class CareersController extends BaseController {
 			careers.setContentType(careers.getCvFile().getContentType());
 			careers.setCvFileName(careers.getCvFile().getOriginalFilename());
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			logger.error("Error uploading cv.");
 			e.printStackTrace();
 		}
 		validator.validate(careers, errors);

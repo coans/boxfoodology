@@ -23,6 +23,7 @@ import com.boxfoodology.db.entity.Bestseller;
 import com.boxfoodology.db.entity.Food;
 import com.boxfoodology.db.repository.BestsellerRepository;
 import com.boxfoodology.db.repository.FoodRepository;
+import com.boxfoodology.validator.BestsellerValidator;
 
 @Controller
 @RequestMapping(BestsellerController.CONTROLLER)
@@ -36,6 +37,8 @@ public class BestsellerController extends BaseController {
 	private BestsellerRepository bestsellerRepository;
 	@Autowired
 	private FoodRepository foodRepository;
+	@Autowired
+	private BestsellerValidator validator;
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public String defaultView(ModelMap model, HttpServletRequest request, HttpSession session, Locale locale) {
@@ -60,8 +63,7 @@ public class BestsellerController extends BaseController {
 	public String create(@ModelAttribute("bestsellermodel") Bestseller bestseller, Errors errors, ModelMap model,
 			final RedirectAttributes redirectAttributes) {
 
-		//TODO validate
-		//validator.validate(food, errors);
+		validator.validate(bestseller, errors);
 		
 		if (errors.hasErrors()) {
 			model.addAttribute("bestsellermodel", bestseller);
@@ -75,51 +77,7 @@ public class BestsellerController extends BaseController {
 		
 		return "redirect:/" + BestsellerController.CONTROLLER;
 	}
-/*	
-	@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
-	public String edit(@PathVariable(value = "id") Integer foodId, ModelMap model, HttpServletRequest request, HttpSession session, Locale locale) throws SQLException, IOException {
-		Food food = foodRepository.findOne(foodId);
-		FoodBean foodBean = new FoodBean();
-		foodBean.setCategory(food.getCategory());
-		foodBean.setDescription(food.getDescription());
-		foodBean.setId(food.getId());
-		foodBean.setName(food.getName());
-		foodBean.setPrice(food.getPrice());
-		
-		model.addAttribute("foodmodel", foodBean);
-		model.addAttribute("action", CONTROLLER + "/update");
-		model.addAttribute("title", "Edit food");
-		model.addAttribute("categories", categoryRepository.findAll());
-		
-		return VIEW_NEW;
-	}
 	
-	@RequestMapping(value = "update", method = RequestMethod.POST)
-	public String update(@ModelAttribute("foodmodel") FoodBean foodBean, Errors errors, ModelMap model,
-			final RedirectAttributes redirectAttributes) {
-
-		Food food = foodRepository.findOne(foodBean.getId());
-		food.setCategory(foodBean.getCategory());
-		food.setDescription(foodBean.getDescription());
-		food.setName(foodBean.getName());
-		food.setPrice(foodBean.getPrice());
-		//TODO fix picture
-		
-		validator.validate(food, errors);
-		
-		if (errors.hasErrors()) {
-			model.addAttribute("foodmodel", foodBean);
-			model.addAttribute("action", CONTROLLER + "/update");
-			model.addAttribute("title", "Edit food");
-			model.addAttribute("categories", categoryRepository.findAll());
-			return VIEW_NEW;
-		}
-		
-		foodRepository.save(food);
-		
-		return "redirect:/" + BestsellerController.CONTROLLER;
-	}
-	*/
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
 	public String delete(@PathVariable(value = "id") Integer bestsellerId) {
 		bestsellerRepository.delete(bestsellerId);

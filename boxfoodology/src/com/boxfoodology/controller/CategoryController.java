@@ -9,6 +9,7 @@ import java.util.Locale;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
 import org.hibernate.engine.jdbc.BlobProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
@@ -35,6 +36,8 @@ import com.boxfoodology.validator.CategoryValidator;
 @Controller
 @RequestMapping(CategoryController.CONTROLLER)
 public class CategoryController extends BaseController {
+	
+	final static Logger logger = Logger.getLogger(CategoryController.class);
 	
 	public static final String CONTROLLER = "categories";
 	public static final String VIEW_DEFAULT = "categories";
@@ -84,7 +87,7 @@ public class CategoryController extends BaseController {
 		try {
 			category.setImage(BlobProxy.generateProxy(categoryBean.getImageFile().getBytes()));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			logger.error("Error creating category.");
 			e.printStackTrace();
 		}
 		validator.validate(category, errors);
@@ -133,7 +136,7 @@ public class CategoryController extends BaseController {
 				category.setImage(BlobProxy.generateProxy(categoryBean.getImageFile().getBytes()));
 			}
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			logger.error("Error updating category[" + categoryBean.getId() + "]");
 			e.printStackTrace();
 		}
 		
