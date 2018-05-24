@@ -18,10 +18,18 @@ public class OurStoryController extends BaseController {
 	
 	public static final String CONTROLLER = "our-story";
 	public static final String VIEW_DEFAULT = "our-story";
+	public static final String VIEW_FAQ = "faq";
+	
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public String defaultView(ModelMap model, HttpServletRequest request, HttpSession session, Locale locale) {
 		
 		return VIEW_DEFAULT;
+	}
+	
+	@RequestMapping(value = "faq", method = RequestMethod.GET)
+	public String faqView(ModelMap model, HttpServletRequest request, HttpSession session, Locale locale) {
+		
+		return VIEW_FAQ;
 	}
 }
