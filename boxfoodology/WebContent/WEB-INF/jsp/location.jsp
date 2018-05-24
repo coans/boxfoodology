@@ -25,22 +25,22 @@
 						<form:form modelAttribute="message" method="POST" action="${action}">
 							<form:hidden path="id" />
 							<div class="form-group">
-								<form:label path="title" class="required">Title</form:label>
-								<form:input path="title" type="text" class="form-control" />
+								<%-- <form:label path="title" class="required">Title</form:label> --%>
+								<form:input path="title" type="text" class="form-control" placeholder="Title *"/>
 								<div class="has-error">
 									<form:errors path="title" cssClass="help-block" element="label"/>
 								</div>
 							</div>
 							<div class="form-group">
-								<form:label path="content" class="required">Message</form:label>
-								<form:textarea path="content" class="form-control" />
+								<%-- <form:label path="content" class="required">Message</form:label> --%>
+								<form:textarea path="content" class="form-control" placeholder="Message *"/>
 								<div class="has-error">
 									<form:errors path="content" cssClass="help-block" element="label"/>
 								</div>
 							</div>
 							<p>&nbsp;</p>					
-							<button type="submit" class="btn btn btn-primary"><spring:message code="button.save"/></button>
-							<a class="btn btn-success" href="#"><spring:message code="button.cancel"/></a>
+							<button type="submit" class="btn btn btn-success"><spring:message code="button.send"/></button>
+							<a class="btn btn-primary" href="#"><spring:message code="button.cancel"/></a>
 						</form:form>
 					</p>
 				</div>

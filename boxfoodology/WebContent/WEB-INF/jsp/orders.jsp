@@ -37,7 +37,7 @@
 							<th class="text-center">Price</th>
 							<th class="text-center">Quantity</th>
 							<th class="text-center">Amount</th>
-							<th class="text-center">Action</th>
+							<th class="text-center">Actions</th>
 						</tr>
 					</thead>
 					<tbody>

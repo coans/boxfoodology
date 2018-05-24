@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 
+import org.hibernate.annotations.Where;
+
 
 
 /**
@@ -18,6 +20,7 @@ import javax.persistence.NamedQuery;
  */
 @Entity
 @NamedQuery(name="Message.findAll", query="SELECT m FROM Message m")
+@Where(clause  = "deleted = 0")
 public class Message implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -27,6 +30,7 @@ public class Message implements Serializable {
 	private String title;
 	private String content;
 	private Date created;
+	private boolean deleted;
 
 	@ManyToOne
 	private User user;
@@ -72,5 +76,13 @@ public class Message implements Serializable {
 
 	public void setCreated(Date created) {
 		this.created = created;
+	}
+
+	public boolean isDeleted() {
+		return deleted;
+	}
+
+	public void setDeleted(boolean deleted) {
+		this.deleted = deleted;
 	}
 }

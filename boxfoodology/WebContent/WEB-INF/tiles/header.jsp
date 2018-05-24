@@ -74,6 +74,7 @@
 						<li><a href="careers/new"><spring:message code="submenu.about.careers"/></a></li>
 						<li><a href="messages/new"><spring:message code="submenu.about.contact"/></a></li>
 						<li><a href="location"><spring:message code="submenu.about.find.us"/></a></li>
+						<li><a href="our-story/faq">FAQ</a></li>
 					</ul>	
 				</li>	
 				<sec:authorize access="hasAnyRole('ROLE_ADMIN')">

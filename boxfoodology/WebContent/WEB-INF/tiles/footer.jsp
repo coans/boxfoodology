@@ -2,13 +2,14 @@
 <%@taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
-<footer>
+<footer style="background:rgb(240,240,240)">
 	<div class="row">
 		<div class="col-xs-2" align="left">
 			<ul>
 				<li><h4><i>ABOUT</i></h4></li>
 				<li><a href="our-story">Our story</a></li><br/>
 				<li><a href="careers/new">Careers</a></li><br/>
+				<li><a href="our-story/faq">FAQ</a></li><br/>
 			</ul>
 		</div>
 		<div class="col-xs-2" align="left">
@@ -26,12 +27,13 @@
 				<li><a href="http://www.twitter.com" target="_blank" rel="noopener"><img alt="Twitter" src="images/twitter.png" title="Twitter"></a></li>
 			</ul>
 		</div>	
-		<div class="col-xs-4" align="right">
+		<div class="col-xs-4" align="right" style="margin-left: 10%;">
 			<ul>
 				<li><a href="#home"><img alt="BoxFoodology" src="images/logo.jpeg" height="95" width="120"></a></li>
 			</ul>
 		</div>				
 	</div>
+	<br/>
 	<div class="container">
 		<ul>
 			<li><a href="policies/terms">Terms</a></li>

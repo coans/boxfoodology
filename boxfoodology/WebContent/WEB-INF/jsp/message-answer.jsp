@@ -7,8 +7,9 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-xs-5">
-					<h3><b>${title}</b></h3>
-					<form:form modelAttribute="message" method="POST" action="${action}">
+					<h3><b>Answer to user[${user}] message</b></h3>
+					<p>${message.content}</p>
+					<form:form modelAttribute="answer" method="POST" action="${action}">
 						<form:hidden path="id" />
 						<div class="form-group">
 							<%-- <form:label path="title" class="required">Title</form:label> --%>
@@ -19,14 +20,14 @@
 						</div>
 						<div class="form-group">
 							<%-- <form:label path="content" class="required">Message</form:label> --%>
-							<form:textarea path="content" class="form-control" placeholder="Message *"/>
+							<form:textarea path="content" class="form-control" placeholder="Answer *"/>
 							<div class="has-error">
 								<form:errors path="content" cssClass="help-block" element="label"/>
 							</div>
 						</div>
 						<p>&nbsp;</p>					
 						<button type="submit" class="btn btn btn-success"><spring:message code="button.send"/></button>
-						<a class="btn btn-primary" href="#"><spring:message code="button.cancel"/></a>
+						<a class="btn btn-primary" href="messages"><spring:message code="button.cancel"/></a>
 					</form:form>
 					<span class="form-group"><label class="required"/><font size="2"><spring:message code="page.required.fields"/></font></span>
 				</div>

@@ -97,6 +97,7 @@ CREATE TABLE `boxfoodology`.`message` (
   `created` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `user_id` INT NULL,
   `created` DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
+  `deleted` TINYINT(1) NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   INDEX `fk_message_user_idx` (`user_id` ASC),
   CONSTRAINT `fk_message_user`

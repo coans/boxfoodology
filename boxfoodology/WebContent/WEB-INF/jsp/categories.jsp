@@ -19,7 +19,7 @@
 				<th class="text-center" scope="col">Menu</th>
 				<th class="text-center" scope="col">Show on home</th>
 				<th class="text-center" scope="col">Date</th>
-				<th class="text-center" scope="col">Action</th>
+				<th class="text-center" scope="col">Actions</th>
 			</tr>
 		</thead>
 		<tbody>
