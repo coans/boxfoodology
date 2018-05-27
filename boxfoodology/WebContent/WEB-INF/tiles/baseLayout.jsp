@@ -26,7 +26,7 @@
 					notify('${successMessage}', 'success');
 				</c:forEach>
 				<c:forEach var="errorMessage" items="${flash.errorMessages}" >
-					notify('${errorMessage}', 'error');
+					notify('${errorMessage}', 'danger');
 				</c:forEach>
 				<c:forEach var="infoMessage" items="${flash.infoMessages}" >
 					notify('${infoMessage}', 'info');

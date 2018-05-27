@@ -7,10 +7,11 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-xs-5">
-					<h3><b>Answer to user[${user}] message</b></h3>
+					<h3><b>Answer to user[${userName}] message</b></h3>
 					<p>${message.content}</p>
 					<form:form modelAttribute="answer" method="POST" action="${action}">
 						<form:hidden path="id" />
+						<form:hidden path="user.id" />
 						<div class="form-group">
 							<%-- <form:label path="title" class="required">Title</form:label> --%>
 							<form:input path="title" type="text" class="form-control" placeholder="Title *"/>

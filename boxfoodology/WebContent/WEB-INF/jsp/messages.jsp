@@ -4,6 +4,7 @@
 
 <div class="container">
 	<%-- <p><a href="messages/new" class="btn btn-info">${title}</a></p> --%>
+	<div id="notifications"></div><!-- notif for cv upload -->
 	<table class="table table-striped">
 		<thead>
 			<tr>
@@ -22,7 +23,9 @@
 					<td align="center">${message.content}</td>
 					<td align="center">${message.created}</td>
 					<td align="center">
-						<a href="messages/answer/${message.id}" title="Answer"><i class="glyphicon glyphicon-envelope"></i></a>
+						<c:if test="${not empty message.user.email}">
+							<a href="messages/answer/${message.id}" title="Answer"><i class="glyphicon glyphicon-envelope"></i></a>
+						</c:if>
 						&nbsp;
 						<a href="#" data-href="messages/delete/${message.id}" data-toggle="modal" data-target="#confirmDeleteId" title="Delete"><i class="glyphicon glyphicon-remove"></i></a>
 					</td>					
