@@ -83,9 +83,10 @@
 						<ul class="dropdown-menu">
 							<li><a href="categories"><spring:message code="category.menu.name"/></a></li>
 							<li><a href="foods"><spring:message code="food.menu"/></a></li>
-							<li><a href="messages">Messages</a></li>
 							<li><a href="bestsellers">Bestsellers</a></li>
+							<li><a href="messages">Messages</a></li>
 							<li><a href="careers"><spring:message code="submenu.about.careers"/></a></li>
+							<li><a href="users">Users</a></li>
 						</ul>
 					</li>
 				</sec:authorize>

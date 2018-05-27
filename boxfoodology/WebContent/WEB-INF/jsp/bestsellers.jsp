@@ -17,7 +17,7 @@
 	<table class="table table-striped">
 		<thead>
 			<tr>
-				<th class="text-center" scope="col">ID</th>
+				<th class="text-center" scope="col">#</th>
 				<th class="text-center" scope="col">Food</th>
 				<th class="text-center" scope="col">Action</th>
 			</tr>

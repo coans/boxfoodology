@@ -8,13 +8,9 @@
 				activation link, by clicking on the link you are activated your profile and you are
 				ready for online ordering food.</p>
 				
-				Reset password
-			<p>We reserve the right to update, change or replace any part of
-				these Terms of Service by posting updates and/or changes to our
-				website. Please check this page on a regular basis to be familiar
-				with the current version of this Agreement. Your continued use of or
-				access to the website following the posting of any changes
-				constitutes acceptance of those changes.</p>
+			<h4>How to reset password</h4>
+			<p>If you forgot your password, go to <a href="login"> login</a> page and click on Forgot password? link or visit directly
+				<a href="recovery">recovery</a> page. Enter you email and instructions for resetting your password will be sent to your email.</p>
 		</div>
 	</div>
 </div>
