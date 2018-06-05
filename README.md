@@ -1,2 +1,2 @@
 # boxfoodology
-web site for boox foodology
+web site for box foodology
