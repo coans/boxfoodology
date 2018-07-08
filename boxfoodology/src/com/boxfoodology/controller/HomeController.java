@@ -2,7 +2,7 @@ package com.boxfoodology.controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.List;
+import java.util.ArrayList;
 import java.util.Locale;
 
 import javax.servlet.ServletOutputStream;
@@ -44,8 +44,8 @@ public class HomeController extends BaseController {
 
 	@RequestMapping(method = RequestMethod.GET)
 	public String defaultView(ModelMap model, HttpServletRequest request, HttpSession session, Locale locale) {
-		List<Post> posts = postRepository.findAll();
-		model.addAttribute("posts", posts);
+	//	List<Post> posts = postRepository.findAll();
+		model.addAttribute("posts", new ArrayList<Post>());//TODO izbaciti ovo
 		model.addAttribute("bestsellerPageOne", bestsellerRepository.findAll(new PageRequest(0, 4)).getContent());
 		model.addAttribute("bestsellerPageTwo", bestsellerRepository.findAll(new PageRequest(1, 4)).getContent());
 		model.addAttribute("bestsellerPageThree", bestsellerRepository.findAll(new PageRequest(2, 4)).getContent());
